@@ -10,9 +10,17 @@ class ListingsController < ApplicationController
   end
 
   def new
+    @listing = Listing.new
   end
 
   def create
+    @listing = Listing.new(listing_params)
+    @listing.user = current_user
+    if @listing.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,6 +33,10 @@ class ListingsController < ApplicationController
   end
 
   private
+
+  def listing_params
+    params.require(:listing).permit(:listing_name, :price, :size, :condition, :description)
+  end
 
   def find_listing
     @listing = Listing.find(:id)
