@@ -1,2 +1,11 @@
-<h1>Listings#new</h1>
-<p>Find me in app/views/listings/new.html.erb</p>
+<div class="container">
+    <%= simple_form_for @listing do |f| %>
+    <%= f.input :listing_name %>
+    <%= f.input :price %>
+    <%= f.input :size %>
+    <%= f.input :condition, collection: @conditions %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }  %>
+    <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+</div>
