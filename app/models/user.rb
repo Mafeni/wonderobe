@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :listings, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  has_one_attached :photo
   # validates :first_name, :last_name, :email, :address, :country, presence: true
 
   devise :database_authenticatable, :registerable,

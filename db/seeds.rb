@@ -5,3 +5,50 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+number = 1
+sizes = ['XS', 'S', 'M', 'L', 'XL']
+conditions = ['New', 'Used']
+
+puts 'Cleaning DB'
+User.destroy_all
+Listing.destroy_all
+puts 'DB is clean'
+
+puts "creating users & listings"
+
+# new_listing = Listing.new({
+#                   listing_name:Faker::Team.name,
+#                   price: rand(19.99..199.99),
+#                   size: sizes[rand(0..4)],
+#                   condition: conditions[rand(0..1)],
+#                   description: Faker::Quotes::Shakespeare.as_you_like_it_quote,
+#                   user_id: rand(1..10),
+#                   photos: ["http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620759459/bav7vyqynwpkfbatxxsp.jpg","http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620758619/nnxzwdci8atqyrep3rw8.jpg"]
+#                 })
+# new_listing.save
+
+
+10.times do
+  user_new = User.new({
+    email: Faker::Internet.email,
+    encrypted_password: Faker::Internet.password(min_length: 7),
+    first_name:Faker::Name.first_name,
+    last_name:Faker::Name.last_name,
+    address:Faker::Address.full_address,
+    country:Faker::Address.country_code,
+    photo: "http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620758619/nnxzwdci8atqyrep3rw8.jpg"
+  })
+  user_new.save
+  new_listing = Listing.new({
+                  listing_name:Faker::Team.name,
+                  price: rand(19.99..199.99),
+                  size: sizes[rand(0..4)],
+                  condition: conditions[rand(0..1)],
+                  description: Faker::Quotes::Shakespeare.as_you_like_it_quote,
+                  user_id: user_new.id,
+                  photos: ["http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620759459/bav7vyqynwpkfbatxxsp.jpg","http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620758619/nnxzwdci8atqyrep3rw8.jpg"]
+                })
+  new_listing.save
+  puts "#{user_new.first_name} has been created"
+end
