@@ -2,7 +2,7 @@
     <%= simple_form_for @listing do |f| %>
     <%= f.input :listing_name %>
     <%= f.input :price %>
-    <%= f.input :size %>
+    <%= f.input :size, collection: @sizes %>
     <%= f.input :condition, collection: @conditions %>
     <%= f.input :description %>
     <%= f.input :photos, as: :file, input_html: { multiple: true }  %>

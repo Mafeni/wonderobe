@@ -5,4 +5,6 @@ class Listing < ApplicationRecord
   validates :listing_name, :price, :size, :condition, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :description, length: { maximum: 2000, too_long: "%{count} characters is the maximum allowed" }
+  validates :size, inclusion: { in: %w(XS S M L XL) }
+  validates :condition, inclusion: { in: ["New", "Almost New", "Used"] }
 end
