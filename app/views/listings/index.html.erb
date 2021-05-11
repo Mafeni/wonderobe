@@ -1,2 +1,14 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+<h1><%= @listings.count %> items found</h1>
+
+<div class = "cards-listing">
+  <% @listings.each do |listing| %>
+    <div class = "card-listing">
+      <% if listing.photo.attached? %>
+        <%= cl_image_tag listing.photo.key, height:300, width:400, crop: :fill %>
+      <% end %>
+      <p><%= listing.listing_name %></p>
+      <p><%= listing.price %></p>
+      <p><%= listing.size %></p>
+    </div>
+  <% end %>
+</div>
