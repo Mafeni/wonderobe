@@ -11,7 +11,8 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    @conditions = ["New", "Almost new", "Used"]
+    @conditions = ["New", "Used"]
+    @sizes = ['XS', 'S', 'M', 'L', 'XL']
   end
 
   def create
