@@ -11,13 +11,14 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @conditions = ["New", "Almost new", "Used"]
   end
 
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     if @listing.save
-      redirect_to user_path(current_user)
+      redirect_to listing_path(@listing)
     else
       render :new
     end
@@ -39,6 +40,6 @@ class ListingsController < ApplicationController
   end
 
   def find_listing
-    @listing = Listing.find(:id)
+    @listing = Listing.find(params[:id])
   end
 end
