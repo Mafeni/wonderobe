@@ -1,0 +1,7 @@
+<h1>Create a review</h1>
+
+<%= simple_form_for [@user, @review] do |f| %>
+  <%= f.input :rating, collection: [1, 2, 3, 4, 5], hint: 'Input a rating between 1 and 5 (5 being the highest rating)' %>
+  <%= f.input :comment, as: :text, input_html: {maxlength: 2000} %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
