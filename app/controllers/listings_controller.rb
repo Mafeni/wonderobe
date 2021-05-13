@@ -8,7 +8,6 @@ class ListingsController < ApplicationController
 
   def show; end
 
-
   def new
     @listing = Listing.new
     @conditions = ["New", "Almost new", "Used"]
