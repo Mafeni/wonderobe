@@ -1,5 +1,9 @@
 <div class="container">
-  <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill"%>
+  <% if current_user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill"%>
+  <% else %>
+    <i class="fas fa-user-circle fa-2x"></i>
+  <% end %>
 
   <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
   <h4><%= "#{@user.country}" %></h4>
