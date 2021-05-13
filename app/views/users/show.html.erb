@@ -1,8 +1,14 @@
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<div class="container">
+  <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill"%>
 
-<h4><%= "#{@user.country}" %></h4>
+  <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+  <h4><%= "#{@user.country}" %></h4>
 
-<!-- # if user is equal to current_user,
-# we will show the users reviews, listings and transactions
-# else we only show reviews and listings
- -->
+  <% @user.listings.each do |listing| %>
+    <p><%= listing.listing_name %></p>
+  <% end %>
+  <!-- # if user is equal to current_user,
+  # we will show the users reviews, listings and transactions
+  # else we only show reviews and listings
+  -->
+</div>
