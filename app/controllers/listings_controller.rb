@@ -6,10 +6,6 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
-  def show
-    # @user = User.find(@listing.user_id)
-  end
-
   def show; end
 
   def new
