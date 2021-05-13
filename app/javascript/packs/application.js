@@ -24,6 +24,12 @@ require("channels")
 
 // External imports
 import "bootstrap";
+// var $ = require( "jquery" )
+// require("slick-carousel")
+
+// import "slick-carousel/slick/slick.scss"
+// import "slick-carousel/slick/slick-theme.scss"
+// import "../assets/stylesheets/application.scss"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,4 +37,5 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  // $('.scroller').slick()
 });

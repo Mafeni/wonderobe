@@ -6,8 +6,7 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
-  def show
-  end
+  def show;end
 
   def new
     @listing = Listing.new
@@ -37,7 +36,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:listing_name, :price, :size, :condition, :description)
+    params.require(:listing).permit(:listing_name, :price, :size, :condition, :description, photos: [])
   end
 
   def find_listing
