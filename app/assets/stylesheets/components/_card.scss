@@ -1,0 +1,45 @@
+.card {
+  display: grid;
+  width: 18rem;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: -4px 4px 4px grey;
+
+  h3 {
+    font-size: 2vw;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
+.card-img {
+ border-radius: 4px;
+}
+
+.cards-listing {
+  display: flex;
+  justify: center;
+  align-items: stretch;
+}
+
+.card-img-overlay {
+  color: $white;
+  height: 32px;
+
+  span {
+    margin: 1px;
+    padding: 1px;
+    background-color: $black;
+    border-radius: 8px;
+    box-shadow: -1.5px 1.5px 1.5px $gray;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+}
