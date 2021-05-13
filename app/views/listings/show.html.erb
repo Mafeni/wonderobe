@@ -24,13 +24,15 @@
       </div>
 
       <div>
-        <p class='attribute'>£<%= @listing.price %></p>
+        <p class='attribute'>£<%= @listing.price.round(2) %></p>
         <p class='attribute'>Condition: <%= @listing.condition %></p>
         <p class='attribute'>Description: <%= @listing.description %></p>
       </div>
 
       <div class="d-flex mb-5">
-        <%= link_to "Add to basket", "#" , class:'btn my-2 mr-2'  %>
+        <%= simple_form_for([@listing, @transaction]) do |f| %>
+          <%= f.submit class:'btn my-2 mr-2' %>
+        <% end %>
         <%= link_to "Make an offer", "#" , class:'btn-offer m-2'  %>
         <%= link_to "Chat <i class='fas fa-comments-dollar ml-1'></i>".html_safe, "#" , class:'btn m-2 d-flex'  %>
       </div>
@@ -38,15 +40,17 @@
       <div class='d-flex mb-5'>
 
         <span>
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class:'avatar' %>
+          <% if @listing.user.photo.attached? %>
+            <a href=<%= user_path(@listing.user) %>>
+              <%= cl_image_tag @listing.user.photo.key, class:'avatar' %>
+            </a>
           <% else %>
             <i class="fas fa-user-circle fa-2x"></i>
           <% end %>
         </span>
 
         <div class="ml-2">
-          <p class='m-0'><%= current_user.email %></p>
+          <p class='m-0'><%= @listing.user.email %></p>
           <div class="d-flex">
             <%= '<i class="fas fa-star"></i>'.html_safe * 5 %>
           </div>
