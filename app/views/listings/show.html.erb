@@ -38,7 +38,11 @@
       <div class='d-flex mb-5'>
 
         <span>
-          <%= cl_image_tag current_user.photo.key, class:'avatar' %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class:'avatar' %>
+          <% else %>
+            <i class="fas fa-user-circle fa-2x"></i>
+          <% end %>
         </span>
 
         <div class="ml-2">
