@@ -7,8 +7,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing_user = @listing.user_id
-    @user = User.find(@listing_user)
+    # @user = User.find(@listing.user_id)
   end
 
   def show; end
