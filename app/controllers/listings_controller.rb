@@ -6,8 +6,7 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @listing = Listing.new
@@ -25,13 +24,16 @@ class ListingsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @listing.update(listing_params)
+    redirect_to listing_path(@listing)
   end
 
   def destroy
+    @listing.destroy
+    redirect_to listings_path
   end
 
   private

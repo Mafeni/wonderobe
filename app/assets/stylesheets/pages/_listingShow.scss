@@ -1,0 +1,25 @@
+// Specific CSS for your listing-show-page
+.listingName {
+  letter-spacing: 2px;
+}
+
+.attribute {
+  font-weight: 100;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.picture {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+.small-pic {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  transition: transform 450ms;
+  &:hover{
+    z-index: 5;
+    transform: scale(2);
+  }
+}
