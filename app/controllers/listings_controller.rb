@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
+
   def show
     @transaction = Transaction.new
   end
