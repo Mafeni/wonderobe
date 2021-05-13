@@ -1,3 +1,66 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<div class="container bg-white p-2 rounded">
+  <div class="row d-flex">
+
+    <div class="col-sm-12 col-md-6">
+      <div class="m-2">
+        <%= cl_image_tag @listing.photos.last.key, width:400, height: 550, crop: :fill, class:'picture' %>
+      </div>
+      <div>
+        <ul class='list-inline'>
+          <% @listing.photos.each do |photo| %>
+           <li class="list-inline-item">
+              <%= cl_image_tag photo.key, width:70, height: 80, crop: :fill, class:'small-pic' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 p-2">
+
+      <div class="mb-3">
+        <span class='fw-lighter'>BEST SELLER</span>
+        <h1 class='fw-light listingName'> <%= @listing.listing_name %> </h1>
+      </div>
+
+      <div>
+        <p class='attribute'>£<%= @listing.price %></p>
+        <p class='attribute'>Condition: <%= @listing.condition %></p>
+        <p class='attribute'>Description: <%= @listing.description %></p>
+      </div>
+
+      <div class="d-flex mb-5">
+        <%= link_to "Add to basket", "#" , class:'btn my-2 mr-2'  %>
+        <%= link_to "Make an offer", "#" , class:'btn-offer m-2'  %>
+        <%= link_to "Chat <i class='fas fa-comments-dollar ml-1'></i>".html_safe, "#" , class:'btn m-2 d-flex'  %>
+      </div>
+
+      <div class='d-flex mb-5'>
+
+        <span>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class:'avatar' %>
+          <% else %>
+            <i class="fas fa-user-circle fa-2x"></i>
+          <% end %>
+        </span>
+
+        <div class="ml-2">
+          <p class='m-0'><%= current_user.email %></p>
+          <div class="d-flex">
+            <%= '<i class="fas fa-star"></i>'.html_safe * 5 %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex">
+        <p class='mr-2'>Share this item:</p>
+        <i class="fab fa-facebook-square mr-2 fa-lg"></i>
+        <i class="fab fa-instagram mr-2 fa-lg"></i>
+        <i class="fab fa-twitter-square fa-lg"></i>
+      </div>
+    </div>
+  </div>
+</div>
 
