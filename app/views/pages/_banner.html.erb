@@ -1,10 +1,20 @@
-<div class="banner" style="background-image: url(<%= cl_image_tag("bg")%>)">
+<% if current_page?(:controller => 'pages', :action => 'home') %>
+  <div class="banner background-image-home">
+<% else %>
+
+<% end %>
    <div class="banner-text">
-      <h4>WELCOME TO WONDEROBE</h4>
+      <% unless user_signed_in? %>
+        <h4>WELCOME TO WONDEROBE</h4>
+      <% end %>
       <h1>Buy & Sell</h1>
       <h1>Pre-loved clothes</h1>
       <p>Discover new ways to express yourself & Give your old clothes a new home.</p>
       <p>Here on Wonderobe</p>
-      <%= link_to "sign up", new_user_session_path, class: "btn btn-outline-primary" %>
+      <% if user_signed_in? %>
+        <%= link_to 'add listing', new_listing_path, class:"btn btn-outline-primary" %>
+      <% else %>
+        <%= link_to "sign up", new_user_session_path, class: "btn btn-outline-primary" %>
+      <% end %>
    </div>
 </div>
