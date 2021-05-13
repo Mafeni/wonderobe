@@ -1,0 +1,18 @@
+<h2>Hot Picks</h2>
+
+<div class="cards-listing row d-flex justify-content-center align-items-center">
+  <% @listings.each do |listing| %>
+    <div class="col-auto mb-3">
+      <div class="card">
+        <% if listing.photos.attached? %>
+          <%= cl_image_tag listing.photos.first.key, class: "card-img", height:300, width:400, crop: :fill %>
+        <% end %>
+        <h3 class= "listing-title"><%= listing.listing_name %></h3>
+        <div class="card-img-overlay">
+          <p><span><%= "£#{listing.price.round(2)}" %></span></p>
+        </div>
+        <p><bold><%= listing.size %></bold></p>
+      </div>
+    </div>
+  <% end %>
+</div>
