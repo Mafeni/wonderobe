@@ -11,10 +11,15 @@
       <h1>Pre-loved clothes</h1>
       <p>Discover new ways to express yourself & Give your old clothes a new home.</p>
       <p>Here on Wonderobe</p>
-      <% if user_signed_in? %>
-        <%= link_to 'add listing', new_listing_path, class:"btn btn-outline-primary" %>
-      <% else %>
-        <%= link_to "sign up", new_user_session_path, class: "btn btn-outline-primary" %>
-      <% end %>
+      <div class="links">
+        <% if user_signed_in? %>
+          <%= link_to 'add listing', new_listing_path, class:"btn btn-primary" %>
+        <% else %>
+          <%= link_to "sign up", new_user_session_path, class: "btn btn-primary" %>
+        <% end %>
+        <% if current_page?(:controller => 'pages', :action => 'home')%>
+          <%= link_to "all listings", listings_path, class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
    </div>
 </div>

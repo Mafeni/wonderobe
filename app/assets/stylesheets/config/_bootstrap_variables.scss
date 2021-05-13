@@ -23,10 +23,3 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-
-.btn-outline-primary{
-  border-color: $blue;
-  &:hover{
-    color: $blue;
-  }
-}

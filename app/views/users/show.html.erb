@@ -9,7 +9,7 @@
 # else we only show reviews and listings
  -->
 <% @user.listings.each do |listing| %>
-  <p><%= listing.listing_name %></p>
+  <%= render 'card' %>
 <% end %>
 
 <h2>My Purchases (<%= @user.transactions.count %>)</h2>

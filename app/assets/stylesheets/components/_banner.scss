@@ -6,11 +6,12 @@
 	align-items: center;
 	width: 100vw;
 	height: 500px;
+
 }
 
 .banner-text{
 	display: flex;
-	width: 450px;
+	width: 430px;
 	margin-right: 250px;
 	flex-direction: column;
 	align-items: flex-start;
@@ -48,6 +49,10 @@
     letter-spacing: 0.2px;
     color: $black;
 	}
+	a{	
+		margin-right: 0;
+		padding: 8px 10px;
+	}
 }
 
 .background-image-home{
@@ -57,11 +62,12 @@
 
 .background-image-index{
   background: url("http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620930367/yue8zdtx973wfsnjfjkg.jpg");
+	background-position: center; 
 	mix-blend-mode: normal;
 	opacity: 0.5;
-	border: 1px solid #000000;
 	box-sizing: border-box;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 	height:490px;
-	width:1440px;
+	width:100vw;
+	margin-top: 20px;
+	margin-bottom: 0px;
 }
