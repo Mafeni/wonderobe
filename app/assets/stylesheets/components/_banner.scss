@@ -56,5 +56,12 @@
 }
 
 .background-image-index{
-
+  background: url("http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620930367/yue8zdtx973wfsnjfjkg.jpg");
+	mix-blend-mode: normal;
+	opacity: 0.5;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	height:490px;
+	width:1440px;
 }
