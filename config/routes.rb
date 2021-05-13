@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
   # get 'profile', action: :show, controller: 'users'
 
+  resources :users do
+    resources :reviews,  only: [:new, :create]
+  end
 end
