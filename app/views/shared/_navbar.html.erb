@@ -3,16 +3,7 @@
     <%= image_tag "cloth_icon.png" %>
   <% end %>
 
-<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <form class="form-inline search-bar" action="<%= listings_path %>">
-    <input class="form-control px-5" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-  </form>
-
-<%= form_tag listings_path, method: :get do %>
+<%= form_tag listings_path, class: "form-inline", method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
