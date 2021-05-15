@@ -34,6 +34,11 @@ gem 'faker'
 # bootstrap 5.0
 gem 'bootstrap', '~> 5.0.1'
 
+gem 'country_select', '~> 5.0', '>= 5.0.1'
+
+#PG search
+gem 'pg_search', '~> 2.3.0'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'

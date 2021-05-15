@@ -3,7 +3,11 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :update, :edit, :destroy]
 
   def index
-    @listings = Listing.all
+    if params[:query].present?
+      @listings = Listing.search_by_listing_name_and_description(params[:query])
+    else
+      @listings = Listing.all
+    end
   end
 
 
