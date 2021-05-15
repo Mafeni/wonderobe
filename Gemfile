@@ -34,8 +34,6 @@ gem 'faker'
 #country-select
 gem 'country_select'
 
-# country select
-gem 'country_select', '~> 5.0', '>= 5.0.1'
 #PG search
 gem 'pg_search', '~> 2.3.0'
 
