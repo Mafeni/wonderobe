@@ -1,6 +1,6 @@
 .banner{
 	position: relative;
-	top: -1rem;
+	top: -2rem;
 	display:flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -49,20 +49,20 @@
     letter-spacing: 0.2px;
     color: $black;
 	}
-	a{	
+	a{
 		margin-right: 0;
 		padding: 8px 10px;
 	}
 }
 
 .background-image-home{
-	background-image: url("https://res.cloudinary.com/dh5s1kdcd/image/upload/v1620766332/lus6gycqz8bawz9gezfb.png"); 
+	background-image: url("https://res.cloudinary.com/dh5s1kdcd/image/upload/v1620766332/lus6gycqz8bawz9gezfb.png");
 	background-size: cover;
 }
 
 .background-image-index{
   background: url("http://res.cloudinary.com/dh5s1kdcd/image/upload/v1620930367/yue8zdtx973wfsnjfjkg.jpg");
-	background-position: center; 
+	background-position: center;
 	mix-blend-mode: normal;
 	opacity: 0.5;
 	box-sizing: border-box;
