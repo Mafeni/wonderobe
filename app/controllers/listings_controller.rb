@@ -10,7 +10,6 @@ class ListingsController < ApplicationController
     end
   end
 
-
   def show
     @transaction = Transaction.new
   end
@@ -31,7 +30,8 @@ class ListingsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     @listing.update(listing_params)

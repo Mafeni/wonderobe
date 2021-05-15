@@ -1,9 +1,11 @@
-<h1><%= @listings.count %> items found</h1>
+<div class="container">
+	<h1><%= @listings.count %> items found</h1>
 
-<div class="cards-listing row d-flex justify-content-center align-items-center">
-  <% @listings.each do |listing| %>
-		<%= render './shared/card', listing: listing %>
-  <% end %>
+	<div class="cards-listing row d-flex justify-content-center align-items-center">
+		<% @listings.each do |listing| %>
+			<%= render './shared/card', listing: listing %>
+		<% end %>
+	</div>
+
+	<%= render './pages/banner' %>
 </div>
-
-<%= render './pages/banner' %>
