@@ -50,10 +50,12 @@
         </span>
 
         <div class="ml-2">
-          <p class='m-0'><%= @listing.user.email %></p>
+          <p class='m-0'><%= @listing.user.first_name %></p>
           <div class="d-flex">
+
             <%= '<i class="fas fa-star"></i>'.html_safe * @rounded_average_of_ratings %> <%= '<i class="far fa-star"></i>'.html_safe * (5-@rounded_average_of_ratings) %>
             <%= @average_of_ratings.round(1).to_f %>
+
           </div>
         </div>
 

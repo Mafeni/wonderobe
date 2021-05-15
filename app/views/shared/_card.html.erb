@@ -1,14 +1,30 @@
     <div class="col-auto mb-3">
-      <a href=<%= listing_path(listing) %>>
+      <a class="card-link" href=<%= listing_path(listing) %>>
         <div class="card">
           <% if listing.photos.attached? %>
             <%= cl_image_tag listing.photos.first.key, class: "card-img", height:200, width:400, crop: :fill %>
           <% end %>
-          <h3><%= listing.listing_name %></h3>
           <div class="card-img-overlay">
             <p><span><%= "£#{listing.price.round(2)}" %></span></p>
+          </div>
+          <div class="card-body">
+            <div class="card-left">
+              <h3><%= listing.listing_name %></h3>
+              <h4><%= listing.condition %></h4>
             </div>
-          </a>
-        <p><bold><%= listing.size %></bold></p>
+            <div class="card-right">
+              <p><%= listing.size %></p>
+              <p>🤍</p>
+            </div>            
+          </div>
+            <% if listing.user == current_user %>
+              <div class="card-links">
+                <%= link_to "edit", edit_listing_path(listing) %>
+                <%= link_to "delete", listing_path(listing), 
+                                      method: :delete,
+                                      data: { confirm: "Are you sure?" } %>
+              </div>
+            <% end %>
       </div>
+    </a>
     </div>

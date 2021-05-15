@@ -10,7 +10,6 @@ class ListingsController < ApplicationController
     end
   end
 
-
   def show
     @transaction = Transaction.new
     @sum_of_ratings = 0
@@ -37,7 +36,8 @@ class ListingsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     @listing.update(listing_params)

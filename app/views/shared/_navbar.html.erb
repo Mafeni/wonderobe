@@ -3,19 +3,21 @@
     <%= image_tag "cloth_icon.png" %>
   <% end %>
 
-<%= form_tag listings_path, class: "form-inline", method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a listing"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+  <%= form_tag listings_path, class: "form-inline", method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control px-4",
+      placeholder: "Find a listing"
+    %>
+
+    <%= button_tag(type: "submit", class: "btn btn-default mx-2 px-3") do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>

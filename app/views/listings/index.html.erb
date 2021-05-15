@@ -1,5 +1,5 @@
-<h1><%= @listings.count %> items found</h1>
-
+<div class="container">
+	<h1><%= @listings.count %> items found</h1>
       <div class="links">
         <% if user_signed_in? %>
           <%= link_to '+ Add a listing', new_listing_path, class:"btn btn-primary" %>
