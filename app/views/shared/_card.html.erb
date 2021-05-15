@@ -15,12 +15,12 @@
             <div class="card-right">
               <p><%= listing.size %></p>
               <p>🤍</p>
-            </div>            
+            </div>
           </div>
             <% if listing.user == current_user %>
               <div class="card-links">
                 <%= link_to "edit", edit_listing_path(listing) %>
-                <%= link_to "delete", listing_path(listing), 
+                <%= link_to "delete", listing_path(listing),
                                       method: :delete,
                                       data: { confirm: "Are you sure?" } %>
               </div>
