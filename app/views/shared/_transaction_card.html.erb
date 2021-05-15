@@ -15,8 +15,15 @@
             <div class="card-right">
               <p><%= transaction.listing.size %></p>
               <p>🤍</p>
-            </div> 
+            </div>
+			<% if transaction.user == current_user %>
+              <div class="card-links">
+                <%= link_to "review", new_purchase_review_path(transaction, @review) %>
+			  </div>
+			<% end %>
 	   </div>
 	</a>
 </div>
+
+
 

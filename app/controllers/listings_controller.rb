@@ -12,7 +12,6 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing.punch(request)
     @top_listings = Listing.most_hit(1.month.ago, 9)
     @transaction = Transaction.new
     if @listing.user.reviews.present?

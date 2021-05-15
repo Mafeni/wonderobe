@@ -1,0 +1,13 @@
+<div class="card review-card">
+  <div class="card-left">
+	<% if review.purchase.user.photo.attached? %>
+		<%= cl_image_tag review.purchase.user.photo.key, class: "card-img", height:80, width:100, crop: :fill %>
+	<% else %>
+       <i class="fas fa-user-circle fa-2x" style= "font-size: 80px;"></i>
+    <% end %>
+  </div>
+  <div class="card-right">
+    <p><%= '<i class="fas fa-star"></i>'.html_safe * review.rating %></p>
+    <p class= "comment"><em>"<%= review.comment %>"</em></p>
+  </div>
+</div>
