@@ -1,5 +1,5 @@
     <div class="col-auto mb-3">
-      <a href=<%= listing_path(listing) %>>
+      <a class="card-link" href=<%= listing_path(listing) %>>
         <div class="card">
           <% if listing.photos.attached? %>
             <%= cl_image_tag listing.photos.first.key, class: "card-img", height:200, width:400, crop: :fill %>
