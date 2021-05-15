@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def show
+    @reviews = Review.all.select  {|review| review.purchase.listing.user == @user}
   end
 
   def edit

@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @transaction = Transaction.new
+    @purchase = Purchase.new
   end
 
   def new
