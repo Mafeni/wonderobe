@@ -12,6 +12,14 @@ class ListingsController < ApplicationController
 
   def show
     @purchase = Purchase.new
+    if @listing.user.reviews.present?
+      @sum_of_ratings = 0
+      @listing.user.reviews.each do |review|
+        @sum_of_ratings += review.rating.to_i
+      end
+      @average_of_ratings = @sum_of_ratings / @listing.user.reviews.count
+      @rounded_average_of_ratings = @average_of_ratings.round
+    end
   end
 
   def new
