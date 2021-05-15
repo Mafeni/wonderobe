@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       @average_of_ratings = @sum_of_ratings / @user.reviews.count
       @rounded_average_of_ratings = @average_of_ratings.round
     end
+    @reviews = Review.all.select  {|review| review.purchase.listing.user == @user}
   end
 
   def edit

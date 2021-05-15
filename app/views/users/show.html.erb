@@ -6,7 +6,7 @@
       <% if current_user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill", class:'avatar-profile'%>
       <% else %>
-        <i class="fas fa-user-circle fa-2x"></i>
+        <i class="fas fa-user-circle fa-2x" style="font-size: 200px"></i>
       <% end %>
       </div>
       <div class="ml-5">
@@ -35,6 +35,7 @@
 
   <div class="row mt-5">
     <div class="col-12">
+
       <% if @user == current_user %>
         <h2>My Listings (<%= @user.listings.count %>)</h2>
       <% else %>
@@ -50,26 +51,34 @@
           <%= render './shared/card', listing: listing %>
         <% end %>
       </div>
-
     </div>
   </div>
 
   <div class="row mt-5 mb-5">
     <div class="col-12">
       <% if @user == current_user %>
-        <h2>My Purchases (<%= @user.transactions.count %>)</h2>
+        <h2>My Purchases (<%= @user.purchases.count %>)</h2>
       <% else %>
-        <h2><%= @user.first_name %>'s Purchases (<%= @user.transactions.count %>)</h2>
+        <h2><%= @user.first_name %>'s Purchases (<%= @user.purchases.count %>)</h2>
       <% end %>
-
-      <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
-        <% @user.transactions.each do |transaction|%>
+      <div class="card-deck">
+        <% @user.purchases.each do |transaction|%>
           <%= render './shared/transaction_card', transaction: transaction %>
         <% end %>
       </div>
     </div>
   </div>
 
+  <div class="row mt-5 mb-5">
+    <div class="col-12">
+      <h2>My reviews(<%= @reviews.count %>)</h2>
+      <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
+        <% @reviews.each do |review|%>
+          <%= render './shared/review_card', review: review %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- # if user is equal to current_user,
