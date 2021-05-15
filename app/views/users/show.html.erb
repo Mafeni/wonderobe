@@ -1,4 +1,5 @@
 <div class="container">
+
   <% if current_user.photo.attached? %>
     <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill"%>
   <% else %>
@@ -12,27 +13,15 @@
 # we will show the users reviews, listings and transactions
 # else we only show reviews and listings
  -->
+<h2>My Listings (<%= @user.listings.count %>)</h2>
 <% @user.listings.each do |listing| %>
-  <p><%= listing.listing_name %></p>
+  <%= render './shared/card', listing: listing %>
 <% end %>
 
 <h2>My Purchases (<%= @user.transactions.count %>)</h2>
 	<div class="cards-listing row d-flex justify-content-flex-start align-items-center">
 		<% @user.transactions.each do |transaction|%>
-			<div class="col-auto mb-3">
-				<a href=<%= listing_path(transaction.listing) %>>
-					<div class="card">
-						<% if transaction.listing.photos.attached? %>
-							<%= cl_image_tag transaction.listing.photos.first.key, class: "card-img", height:150, width:400, crop: :fill %>
-						<% end %>
-						<h3><%= transaction.listing.listing_name %></h3>
-						<div class="card-img-overlay">
-							<p><span><%= "£#{transaction.listing.price.round(2)}" %></span></p>
-							</div>
-						</a>
-					<p><bold><%= transaction.listing.size %></bold></p>
-				</div>
-			</div>
+      <%= render './shared/transaction_card', transaction: transaction %>
 		<% end %>
 	</div>
 
