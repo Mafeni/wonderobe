@@ -1,8 +1,8 @@
 <div class="col-auto mb-3">
   <a class="card-link" href=<%= listing_path(transaction.listing) %>>
-		<div class="card small">
+		<div class="card ">
 			<% if transaction.listing.photos.attached? %>
-				<%= cl_image_tag transaction.listing.photos.first.key, class: "card-img", height:150, width:400, crop: :fill %>
+				<%= cl_image_tag transaction.listing.photos.first.key, class: "card-img", height:200, width:400, crop: :fill %>
 			<% end %>
 			<div class="card-img-overlay">
 				<p><span><%= transaction.created_at.strftime("%d-%m-%Y") %></span></p>
@@ -16,6 +16,7 @@
               <p><%= transaction.listing.size %></p>
               <p>🤍</p>
             </div>
+          </div>
 	   </div>
 	</a>
 </div>
