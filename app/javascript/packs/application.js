@@ -33,9 +33,19 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import places from 'places.js';
+
+const initAutocomplete = () => {
+  const addressInput = document.getElementById('user_address');
+  if (addressInput) {
+    places({ container: addressInput });
+  }
+};
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // $('.scroller').slick()
+  initAutocomplete();
 });
