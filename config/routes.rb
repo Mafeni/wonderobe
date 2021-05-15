@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :transactions, only: [:new, :create]
   end
 
-  resources :users, only: %i[show]
+  resources :users, only: %i[show edit update]
   # get 'profile', action: :show, controller: 'users'
 
   resources :users do
