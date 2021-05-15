@@ -1,14 +1,11 @@
 .card {
   display: grid;
   width: 18rem;
-  padding: 8px;
+  height:320px;
   border-radius: 4px;
+  border: 0;
   box-shadow: -4px 4px 4px grey;
-
-  h3 {
-    font-size: 2vw;
-  }
-
+  margin: 14px;
   a {
     text-decoration: none;
     color: $black;
@@ -19,27 +16,68 @@
   }
 }
 
+.small{
+  height: 250px;
+}
+
 .card-img {
- border-radius: 4px;
+ border-radius: 4px 0 0 4px;
 }
 
 .cards-listing {
   display: flex;
-  justify: center;
+  justify-content:flex-start;
   align-items: stretch;
+  flex-wrap:wrap;
 }
 
 .card-img-overlay {
-  color: $white;
+  color: $black;
   height: 32px;
 
   span {
     margin: 1px;
-    padding: 1px;
-    background-color: $black;
+    padding: 5px 12px;
+    background-color: $white;
     border-radius: 8px;
     box-shadow: -1.5px 1.5px 1.5px $gray;
     font-weight: bold;
     font-size: 1.2rem;
   }
+}
+
+.card-body{
+  display:flex;
+  justify-content: space-between;
+  h3 {
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 19px;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  h4{
+    font-family: $main-font;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    margin-top: 5px;
+  }
+
+  p{
+    text-align: center;
+    padding-bottom: 0;
+  }
+}
+
+.card-links{
+  position:absolute;
+  text-align:center;
+  bottom:10px;
+  width: 100%;
 }
