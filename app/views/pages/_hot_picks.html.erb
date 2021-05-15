@@ -1,5 +1,6 @@
 <div class="container">
-  <h2>Hot Picks</h2>
+  <h2>🔥 This Month's Hottest Listings 🔥</h2>
+  <p>Here are this month's 9 most viewed listings on Wonderobe</p>
 </div>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators indicators">
@@ -8,7 +9,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicator"></li>
     </ol>
     <div class="carousel-inner">
-      <% card_slices = @listings.slice(0..2) %>
+      <% card_slices = @top_listings.slice(0..2) %>
         <div class="carousel-item active">
           <div class="cards-listing row d-flex justify-content-center align-items-center">
              <% card_slices.each do |listing| %>
@@ -16,7 +17,7 @@
              <% end %>
            </div>
         </div>
-        <% card_slices = @listings.slice(3..5) %>
+        <% card_slices = @top_listings.slice(3..5) %>
           <div class="carousel-item">
             <div class="cards-listing row d-flex justify-content-center align-items-center">
                <% card_slices.each do |listing| %>
@@ -25,7 +26,7 @@
              </div>
           </div>
       <div class="carousel-item">
-        <% card_slices = @listings.slice(6..8) %>
+        <% card_slices = @top_listings.slice(6..8) %>
            <div class="carousel-item active">
              <div class="cards-listing row d-flex justify-content-center align-items-center">
                 <% card_slices.each do |listing| %>
