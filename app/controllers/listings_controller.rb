@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :update, :edit, :destroy]
 
   def index
+    @top_listings = Listing.most_hit(1.month.ago, 9)
     if params[:query].present?
       @listings = Listing.search_by_listing_name_and_description(params[:query])
     else
@@ -11,6 +12,8 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listing.punch(request)
+    @top_listings = Listing.most_hit(1.month.ago, 9)
     @transaction = Transaction.new
     if @listing.user.reviews.present?
       @sum_of_ratings = 0
