@@ -12,36 +12,44 @@
       <div class="ml-5">
         <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
         <h4><%= "#{@user.country}" %></h4>
-
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>My Listings (<%= @user.listings.count %>)</h2>
-
-      <div class="card-deck">
-        <% @user.listings.each do |listing| %>
-          <%= render './shared/card', listing: listing %>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="row mt-5 mb-5">
-    <div class="col-12">
-      <h2>My Purchases (<%= @user.transactions.count %>)</h2>
-      <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
-        <% @user.transactions.each do |transaction|%>
-          <%= render './shared/transaction_card', transaction: transaction %>
+        <% sum = 0 %>
+        <% if @user.reviews.empty? %>
+          <h4>Rating: <%= sum %></h4>
+        <% else %>
+          <% @user.reviews.each do |review| %>
+            <h4><%= sum += review.rating %></h4>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 
+
+    <div class="row mt-5">
+      <div class="col-12">
+        <h2>My Listings (<%= @user.listings.count %>)</h2>
+
+        <div class="card-deck">
+          <% @user.listings.each do |listing| %>
+            <%= render './shared/card', listing: listing %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-5">
+      <div class="col-12">
+        <h2>My Purchases (<%= @user.transactions.count %>)</h2>
+        <div class="card-deck">
+          <% @user.transactions.each do |transaction|%>
+            <%= render './shared/transaction_card', transaction: transaction %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <!-- # if user is equal to current_user,
