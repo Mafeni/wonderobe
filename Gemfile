@@ -29,8 +29,10 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'bootsnap', '>= 1.4.2', require: false
 # cloudinary
 gem 'cloudinary', '~> 1.16.0'
-#faker
+# faker
 gem 'faker'
+# bootstrap 5.0
+gem 'bootstrap', '~> 5.0.1'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
