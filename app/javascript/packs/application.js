@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+
 // var $ = require( "jquery" )
 // require("slick-carousel")
 
