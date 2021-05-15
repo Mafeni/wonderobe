@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cloudinary', '~> 1.16.0'
 #faker
 gem 'faker'
+#PG search
+gem 'pg_search', '~> 2.3.0'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
