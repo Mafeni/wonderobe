@@ -9,8 +9,7 @@
         <i class="fas fa-user-circle fa-2x" style="font-size: 200px"></i>
       <% end %>
     </div>
-
-    <div class="col-sm-12 col-md-8 ml-5">
+    <div class="col-sm-12 col-md-4">
       <% if @user == current_user  %>
         <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
       <% else %>
@@ -29,7 +28,6 @@
         <% end %>
 
       <% end %>
-
     </div>
   </div>
 

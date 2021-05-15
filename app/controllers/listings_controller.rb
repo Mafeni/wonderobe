@@ -13,10 +13,11 @@ class ListingsController < ApplicationController
 
   def show
     @top_listings = Listing.most_hit(1.month.ago, 9)
-    @transaction = Transaction.new
-    if @listing.user.reviews.present?
+    @reviews = Review.all.select { |review| review.purchase.listing.user == @user }
+    @transaction = Purchase.new
+    if @reviews.present?
       @sum_of_ratings = 0
-      @listing.user.reviews.each do |review|
+      @reviews.each do |review|
         @sum_of_ratings += review.rating.to_i
       end
       @average_of_ratings = @sum_of_ratings / @listing.user.reviews.count
