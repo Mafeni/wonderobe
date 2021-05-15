@@ -2,15 +2,15 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def show
-    if @user.reviews.present?
+    @reviews = Review.all.select  {|review| review.purchase.listing.user == @user}
+    if @reviews.present?
       @sum_of_ratings = 0
-      @user.reviews.each do |review|
+      @reviews.each do |review|
         @sum_of_ratings += review.rating.to_i
       end
-      @average_of_ratings = @sum_of_ratings / @user.reviews.count
+      @average_of_ratings = @sum_of_ratings / @reviews.count
       @rounded_average_of_ratings = @average_of_ratings.round
     end
-    @reviews = Review.all.select  {|review| review.purchase.listing.user == @user}
   end
 
   def edit
