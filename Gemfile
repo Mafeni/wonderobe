@@ -31,8 +31,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cloudinary', '~> 1.16.0'
 # faker
 gem 'faker'
-#country-select
-gem 'country_select'
 
 # country select
 gem 'country_select', '~> 5.0', '>= 5.0.1'
