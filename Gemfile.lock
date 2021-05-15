@@ -295,7 +295,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.16.0)
-  country_select
+  country_select (~> 5.0, >= 5.0.1)
   devise
   dotenv-rails
   faker
