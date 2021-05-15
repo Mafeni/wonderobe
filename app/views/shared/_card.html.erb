@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
             <div class="card-left">
-              <% if @top_listings.include? listing%>
+              <% if @top_listings.include? listing %>
                 <h3>🔥 <%= listing.listing_name %></h3>
               <% else %>
                 <h3><%= listing.listing_name %></h3>

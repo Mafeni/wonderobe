@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def show
+    @top_listings = Listing.most_hit(1.month.ago, 9)
     @reviews = Review.all.select  {|review| review.purchase.listing.user == @user}
     if @reviews.present?
       @sum_of_ratings = 0
