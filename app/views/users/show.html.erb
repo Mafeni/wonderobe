@@ -10,9 +10,24 @@
       <% end %>
       </div>
       <div class="ml-5">
-        <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+        <% if @user == current_user  %>
+          <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+        <% else %>
+          <h1><%= @user.first_name %></h1>
+        <% end %>
         <h4><%= "#{@user.country}" %></h4>
+        <% if @user.reviews.present? %>
+          <%= '<i class="fas fa-star"></i>'.html_safe * @rounded_average_of_ratings %><%= '<i class="far fa-star"></i>'.html_safe * (5-@rounded_average_of_ratings) %>
+          <%= @average_of_ratings.round(1).to_f %>
+        <% else %>
 
+          <% if @user == current_user %>
+            <p><em>You do not have any reviews yet</em></p>
+          <% else %>
+            <p><em>No reviews yet for <%= @user.first_name %></em></p>
+          <% end %>
+
+        <% end %>
       </div>
     </div>
   </div>
@@ -20,7 +35,17 @@
 
   <div class="row mt-5">
     <div class="col-12">
-      <h2>My Listings (<%= @user.listings.count %>)</h2>
+
+      <% if @user == current_user %>
+        <h2>My Listings (<%= @user.listings.count %>)</h2>
+      <% else %>
+        <h2><%= @user.first_name %>'s Listings (<%= @user.listings.count %>)</h2>
+      <% end %>
+
+      <% if user_signed_in? && @user == current_user %>
+          <%= link_to '+ Add a listing', new_listing_path, class:"btn btn-primary" %>
+      <% end %>
+
       <div class="card-deck">
         <% @user.listings.each do |listing| %>
           <%= render './shared/card', listing: listing %>
@@ -31,7 +56,11 @@
 
   <div class="row mt-5 mb-5">
     <div class="col-12">
-      <h2>My Purchases (<%= @user.purchases.count %>)</h2>
+      <% if @user == current_user %>
+        <h2>My Purchases (<%= @user.purchases.count %>)</h2>
+      <% else %>
+        <h2><%= @user.first_name %>'s Purchases (<%= @user.purchases.count %>)</h2>
+      <% end %>
       <div class="card-deck">
         <% @user.purchases.each do |transaction|%>
           <%= render './shared/transaction_card', transaction: transaction %>
