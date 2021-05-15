@@ -36,6 +36,9 @@ gem 'bootstrap', '~> 5.0.1'
 
 gem 'country_select', '~> 5.0', '>= 5.0.1'
 
+gem "punching_bag"
+
+
 #PG search
 gem 'pg_search', '~> 2.3.0'
 
