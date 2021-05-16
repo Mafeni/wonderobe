@@ -1,18 +1,21 @@
 <div class="container">
-	<h1><%= @listings.count %> items found</h1>
-      <div class="links">
-        <% if user_signed_in? %>
-          <%= link_to '+ Add a listing', new_listing_path, class:"btn btn-primary" %>
-        <% else %>
-          <%= link_to "Sign up to add a listing", new_user_session_path, class: "btn btn-primary" %>
-        <% end %>
-        <% if current_page?(:controller => 'pages', :action => 'home')%>
-          <%= link_to "See all listings", listings_path, class: "btn btn-outline-primary" %>
-        <% end %>
+      <div class='text-center'>
+        <h1><%= @listings.count %> items found</h1>
+        <div class="links">
+          <% if user_signed_in? %>
+            <%= link_to '+ Add a listing', new_listing_path, class:"btn btn-primary" %>
+          <% else %>
+            <%= link_to "Sign up to add a listing", new_user_session_path, class: "btn btn-primary" %>
+          <% end %>
+          <% if current_page?(:controller => 'pages', :action => 'home')%>
+            <%= link_to "See all listings", listings_path, class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
+      </div>
 
-
-<div class="cards-listing row d-flex justify-content-center align-items-center">
-  <% @listings.each do |listing| %>
-		<%= render './shared/card', listing: listing %>
-  <% end %>
+      <div class="cards-listing row d-flex justify-content-center align-items-center">
+        <% @listings.each do |listing| %>
+      		<%= render './shared/card', listing: listing %>
+        <% end %>
+      </div>
 </div>
