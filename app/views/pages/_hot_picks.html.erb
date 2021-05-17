@@ -9,7 +9,12 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicator"></li>
     </ol>
     <div class="carousel-inner">
-      <% card_slices = @top_listings.slice(0..2) %>
+      <% if @top_listings.empty? %>
+        <% listings = @listings %>
+      <% else %>
+        <% listings = @top_listings %>
+      <% end %>
+      <% card_slices = listings.slice(0..2) %>
         <div class="carousel-item active">
           <div class="cards-listing row d-flex justify-content-center align-items-center">
              <% card_slices.each do |listing| %>
@@ -17,24 +22,26 @@
              <% end %>
            </div>
         </div>
-        <% card_slices = @top_listings.slice(3..5) %>
+        <% if listings.size > 3 %>
+          <% card_slices = listings.slice(3..5) %>
           <div class="carousel-item">
             <div class="cards-listing row d-flex justify-content-center align-items-center">
-               <% card_slices.each do |listing| %>
-                 <%= render './shared/card', listing: listing %>
-               <% end %>
-             </div>
-          </div>
-      <div class="carousel-item">
-        <% card_slices = @top_listings.slice(6..8) %>
-           <div class="carousel-item active">
-             <div class="cards-listing row d-flex justify-content-center align-items-center">
-                <% card_slices.each do |listing| %>
-                  <%= render './shared/card', listing: listing %>
-                <% end %>
+              <% card_slices.each do |listing| %>
+                <%= render './shared/card', listing: listing %>
+              <% end %>
               </div>
-           </div>
-      </div>
+          </div>
+        <% end %>
+        <% if listings.size > 6 %>
+          <% card_slices = listings.slice(6..8) %>
+          <div class="carousel-item">
+            <div class="cards-listing row d-flex justify-content-center align-items-center">
+              <% card_slices.each do |listing| %>
+                <%= render './shared/card', listing: listing %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
