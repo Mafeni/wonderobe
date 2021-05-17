@@ -12,7 +12,7 @@ require "open-uri"
 number = 1
 sizes = ['XS', 'S', 'M', 'L', 'XL']
 conditions = ['New', 'Used']
-products = ["Levis 522, Patent Black","Pattern Jeans, Blue","Leather Driver Saddle Loafers, Tan","Gold Button Cardigan, Black","Fine Stripe Short Sleeve￼Shirt","Lightweight Patch Pocket￼Blazer, Deer"]
+products = ["Levis 522, Patent Black","Pattern Jeans, Blue","Leather Driver Jacket","Gold Button Cardigan, Black","Fine Stripe Shirt","Lightweight Pocket￼Blazer"]
 
 url = 'https://randomuser.me/api/?results=10'
 users_serialized = URI.open(url).read
