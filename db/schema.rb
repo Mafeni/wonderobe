@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_05_15_162206) do
 
   # These are extensions that must be enabled in order to support this database
@@ -48,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
-  
+
   create_table "punches", id: :serial, force: :cascade do |t|
     t.integer "punchable_id", null: false
     t.string "punchable_type", limit: 20, null: false
@@ -59,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
     t.index ["average_time"], name: "index_punches_on_average_time"
     t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
-  
+
   create_table "purchases", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "listing_id", null: false
@@ -67,16 +66,15 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_purchases_on_listing_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
-
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "type"
     t.integer "rating"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "purchase_id", null: false
+    t.string "user_type"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id"
   end
 
@@ -100,5 +98,6 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
   add_foreign_key "listings", "users"
   add_foreign_key "purchases", "listings"
   add_foreign_key "purchases", "users"
+  add_foreign_key "reviews", "purchases"
   add_foreign_key "reviews", "purchases"
 end
