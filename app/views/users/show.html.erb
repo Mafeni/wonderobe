@@ -56,25 +56,23 @@
     <div class="col-12">
       <% if @user == current_user %>
         <h2>My Purchases (<%= @user.purchases.count %>)</h2>
-        <div class="card-deck">
-          <% @user.purchases.each do |transaction|%>
-            <%= render './shared/transaction_card', transaction: transaction %>
-          <% end %>
-        </div>
+      <% else %>
+        <h2><%= @user.first_name %>'s Purchases (<%= @user.purchases.count %>)</h2>
       <% end %>
+      <div class="card-deck">
+        <% @user.purchases.each do |transaction|%>
+          <%= render './shared/transaction_card', transaction: transaction %>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <div class="row mt-5 mb-5">
     <div class="col-12">
-      <h2>What others think (<%= @reviews.count %>)</h2>
+      <h2>My reviews(<%= @reviews.count %>)</h2>
       <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
-        <% if @reviews.present? %>
-          <% @reviews.each do |review|%>
-            <%= render './shared/review_card', review: review %>
-          <% end %>
-        <% else %>
-          <p><%= @user.first_name %> has no reviews yet.</p>
+        <% @reviews.each do |review|%>
+          <%= render './shared/review_card', review: review %>
         <% end %>
       </div>
     </div>
