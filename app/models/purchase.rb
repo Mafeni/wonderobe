@@ -1,5 +1,5 @@
 class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :listing
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 end

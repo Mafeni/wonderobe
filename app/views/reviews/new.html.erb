@@ -1,7 +1,13 @@
-<h1>Create a review</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-5 mt-5 min-vh-100">
+        <h1>Create a review</h1>
 
-<%= simple_form_for [@purchase, @review] do |f| %>
-  <%= f.input :rating, collection: [1, 2, 3, 4, 5], hint: 'Input a rating between 1 and 5 (5 being the highest rating)' %>
-  <%= f.input :comment, as: :text, input_html: {maxlength: 2000} %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+        <%= simple_form_for [@purchase, @review] do |f| %>
+          <%= f.input :rating, collection: [1, 2, 3, 4, 5], hint: 'Input a rating between 1 and 5 (5 being the highest rating)' %>
+          <%= f.input :comment, as: :text, input_html: {maxlength: 2000} %>
+          <%= f.submit "Submit review", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>
