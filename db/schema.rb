@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_162206) do
+ActiveRecord::Schema.define(version: 2021_05_18_184152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "purchased_status", default: false
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -73,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_type"
     t.bigint "purchase_id", null: false
     t.string "user_type"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id"
