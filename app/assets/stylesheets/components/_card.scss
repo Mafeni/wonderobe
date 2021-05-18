@@ -44,11 +44,17 @@
  border-radius: 4px 0 0 4px;
 }
 
+#map {
+  height: 100vh;
+  top: 0;
+  position: sticky;
+}
+
 .cards-listing {
-  display: flex;
-  justify-content:flex-start;
-  align-items: stretch;
-  flex-wrap:wrap;
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr;
+  grid-gap: 16px;
+  padding: 16px;
 }
 
 .card-img-overlay {
