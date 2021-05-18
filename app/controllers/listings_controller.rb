@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listing.punch(request)
     @top_listings = Listing.most_hit(1.month.ago, 9)
     @reviews = Review.all.select { |review| review.purchase.listing.user == @listing.user }
     @transaction = Purchase.new
@@ -59,7 +60,7 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:listing_name, :price, :size, :condition, :description, photos: [])
   end
-  
+
   def find_listing
     @listing = Listing.find(params[:id])
   end
