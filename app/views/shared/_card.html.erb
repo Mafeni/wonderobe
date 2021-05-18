@@ -18,7 +18,11 @@
             </div>
             <div class="card-right">
               <p><%= listing.size %></p>
-              <p>🤍</p>
+              <p>
+                <%= simple_form_for([listing, @favourite]) do |f| %>
+                  <%= f.submit value: '<i class="far fa-heart"></i>'.html_safe, class:'btn my-2 mr-2' %>
+                <% end %>
+              </p>
             </div>
           </div>
             <% if listing.user == current_user %>

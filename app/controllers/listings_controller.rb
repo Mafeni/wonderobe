@@ -9,9 +9,11 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+    @favourite = Favourite.new
   end
 
   def show
+    @favourite = Favourite.new
     @top_listings = Listing.most_hit(1.month.ago, 9)
     @reviews = Review.all.select { |review| review.purchase.listing.user == @user }
     @transaction = Purchase.new
