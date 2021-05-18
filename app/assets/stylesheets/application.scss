@@ -12,3 +12,8 @@
 @import "components/index";
 @import "components/carousel";
 @import "pages/index";
+
+
+.content {
+  min-height: calc(100vh - 320px)
+}
