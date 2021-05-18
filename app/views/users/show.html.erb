@@ -20,13 +20,29 @@
         <%= '<i class="fas fa-star"></i>'.html_safe * @rounded_average_of_ratings %><%= '<i class="far fa-star"></i>'.html_safe * (5-@rounded_average_of_ratings) %>
         <%= @average_of_ratings.round(1).to_f %>
       <% else %>
-
         <% if @user == current_user %>
           <p><em>You do not have any reviews yet</em></p>
         <% else %>
           <p><em>No reviews yet for <%= @user.first_name %></em></p>
         <% end %>
+      <% end %>
 
+      <% if @user == current_user %>
+        <% if @user.reviews.count > 1 %>
+          <p><i class="fas fa-pencil-alt"></i> You wrote <%= @user.reviews.count %> reviews.</p>
+        <% elsif @user.reviews.count == 1 %>
+          <p><i class="fas fa-pencil-alt"></i> You wrote <%= @user.reviews.count %> review.</p>
+        <% else %>
+          <p><i class="fas fa-pencil-alt"></i> You have not written any reviews yet.</p>
+        <% end %>
+      <% else %>
+        <% if @user.reviews.count > 1 %>
+          <p><i class="fas fa-pencil-alt"></i> <%= @user.first_name %> wrote <%= @user.reviews.count %> reviews.</p>
+        <% elsif @user.reviews.count == 1 %>
+          <p><i class="fas fa-pencil-alt"></i> <%= @user.first_name %> wrote <%= @user.reviews.count %> review.</p>
+        <% else %>
+          <p><i class="fas fa-pencil-alt"></i> <%= @user.first_name %> has not written any reviews yet.</p>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -67,7 +83,7 @@
 
   <div class="row mt-5 mb-5">
     <div class="col-12">
-      <h2>What others think (<%= @reviews.count %>)</h2>
+      <h2>What others think of the items <%= @user.first_name %> sold (<%= @reviews.count %>)</h2>
       <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
         <% if @reviews.present? %>
           <% @reviews.each do |review|%>
