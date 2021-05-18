@@ -21,3 +21,16 @@
     color: #2C4F94;
   }
 }
+
+.favourite-btn{
+  background-color: transparent;
+  border: none;
+}
+
+.favourited-heart{
+  color: $red;
+  font-size: 24px;
+  &:hover{
+    color: $black;
+  }
+}
