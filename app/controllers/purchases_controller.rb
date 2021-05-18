@@ -6,11 +6,11 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = Purchase.new
-    @favourites.destroy_all
     @purchase.user = current_user
     @purchase.listing = @listing
     if @purchase.save
       redirect_to user_path(current_user)
+      @favourites.destroy_all
     else
       flash.alert = "Unable to save transaction."
     end
