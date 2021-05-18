@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_162206) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "user_type"
     t.bigint "purchase_id", null: false
+    t.string "user_type"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id"
   end
 
