@@ -14,7 +14,10 @@ class ListingsController < ApplicationController
     @users = User.where.not(latitude: nil, longitude: nil)
 
     @markers = @users.geocoded.map do |user|
-      { lat: user.latitude, lng: user.longitude }
+      { lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+      }
     end
   end
 
