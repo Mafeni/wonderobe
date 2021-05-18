@@ -64,6 +64,12 @@
           <%= render './shared/transaction_card', transaction: transaction %>
         <% end %>
       </div>
+      <h2>My wishlist (<%= @user.favourites.count %>)</h2>
+      <div class="card-deck">
+        <% @user.favourites.each do |favourite|%>
+          <%= render './shared/card', listing: favourite.listing %>
+        <% end %>
+      </div>
     </div>
   </div>
 

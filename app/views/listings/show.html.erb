@@ -33,24 +33,27 @@
       </div>
 
       <div>
-        
         <p class='attribute'>£<%= @listing.price.round(2) %></p>
         <p class='attribute'>Condition: <%= @listing.condition %></p>
         <p class='attribute'>Description: <%= @listing.description %></p>
       </div>
 
       <div class="d-flex mb-5">
-        <%= simple_form_for([@listing, @transaction]) do |f| %>
-          <%= f.submit 'Buy', class:'btn my-2 mr-2' %>
-        <% end %>
-        <% if @listing.favourites.find_by(user_id: current_user) %>
-          <%= link_to 'Delete from Wishlist'.html_safe, favourite_path(@listing.favourites.find_by(user_id: current_user)),
-            method: :delete,
-            class: "btn-offer m-2" %>
+        <% if @listing.purchased_status %>
+          <p class="btn my-2 mr-2 purchased-button">Sold</p>
         <% else %>
-          <%= simple_form_for([@listing, @favourite]) do |f| %>
-            <%= f.submit "Add to wishlist", class: "btn-offer m-2" %> 
-          <% end %>
+          <%= simple_form_for([@listing, @transaction]) do |f| %>
+            <%= f.submit 'Buy', class:'btn my-2 mr-2' %>
+          <% end %>        
+          <% if @listing.favourites.find_by(user_id: current_user) %>
+            <%= link_to 'Delete from Wishlist'.html_safe, favourite_path(@listing.favourites.find_by(user_id: current_user)),
+              method: :delete,
+              class: "btn-offer m-2" %>
+          <% else %>
+            <%= simple_form_for([@listing, @favourite]) do |f| %>
+              <%= f.submit "Add to wishlist", class: "btn-offer m-2" %> 
+            <% end %>
+          <% end %> 
         <% end %>
         <%= link_to "Chat <i class='fas fa-comments-dollar ml-1'></i>".html_safe, "#" , class:'btn m-2 d-flex'  %>
       </div>
