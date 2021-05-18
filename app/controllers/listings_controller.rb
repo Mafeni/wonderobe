@@ -13,14 +13,14 @@ class ListingsController < ApplicationController
 
   def show
     @top_listings = Listing.most_hit(1.month.ago, 9)
-    @reviews = Review.all.select { |review| review.purchase.listing.user == @user }
+    @reviews = Review.all.select { |review| review.purchase.listing.user == @listing.user }
     @transaction = Purchase.new
     if @reviews.present?
       @sum_of_ratings = 0
       @reviews.each do |review|
         @sum_of_ratings += review.rating.to_i
       end
-      @average_of_ratings = @sum_of_ratings / @listing.user.reviews.count
+      @average_of_ratings = @sum_of_ratings / @reviews.count
       @rounded_average_of_ratings = @average_of_ratings.round
     end
   end
@@ -59,7 +59,7 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:listing_name, :price, :size, :condition, :description, photos: [])
   end
-
+  
   def find_listing
     @listing = Listing.find(params[:id])
   end
