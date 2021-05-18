@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
             <div class="card-left">
-              <% if @top_listings.include? listing%>
+              <% if @top_listings.include? listing %>
                 <h3>🔥 <%= listing.listing_name %></h3>
               <% else %>
                 <h3><%= listing.listing_name %></h3>
@@ -23,6 +23,7 @@
           </div>
             <% if listing.user == current_user %>
               <div class="card-links">
+
                 <%= link_to "📝 Edit", edit_listing_path(listing) %>
                 <%= link_to "❌ Delete", listing_path(listing),
                                       method: :delete,

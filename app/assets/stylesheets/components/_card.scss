@@ -75,6 +75,7 @@
 .card-body{
   display:flex;
   justify-content: space-between;
+  max-width: 18rem;
   h3 {
     font-family: $main-font;
     font-style: normal;
@@ -83,7 +84,7 @@
     line-height: 19px;
     margin-top: 5px;
     margin-bottom: 5px;
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     padding-bottom: 5px;
     text-overflow: ellipsis;

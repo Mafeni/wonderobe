@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
-  has_many :transactions, dependent: :destroy
-  has_many :reviews, through: :user
+  has_many :purchases, dependent: :destroy
+  has_many :reviews, through: :purchases
   has_many_attached :photos
   validates :listing_name, :price, :size, :condition, :photos, presence: true
   validates :price, numericality: { greater_than: 0 }
