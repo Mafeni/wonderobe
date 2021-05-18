@@ -15,12 +15,18 @@
                 <h3><%= listing.listing_name %></h3>
               <% end %>
               <h4><%= listing.condition %></h4>
-            </div>
+            </div>    </a>
             <div class="card-right">
               <p><%= listing.size %></p>
               <p>
-                <%= simple_form_for([listing, @favourite]) do |f| %>
-                  <%= f.submit value: '<i class="far fa-heart"></i>'.html_safe, class:'btn my-2 mr-2' %>
+                <% if listing.favourites.find_by(user_id: current_user) %>
+                  <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user)),
+                                      method: :delete,
+                                      class: "favourited-heart" %>
+                <% else %>
+                  <%= simple_form_for([listing, @favourite]) do |f| %>
+                    <%= f.submit "🤍", class: "favourite-btn" %> 
+                  <% end %>
                 <% end %>
               </p>
             </div>
@@ -35,5 +41,5 @@
               </div>
             <% end %>
       </div>
-    </a>
+
     </div>

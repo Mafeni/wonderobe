@@ -1,4 +1,6 @@
 class FavouritesController < ApplicationController
+  before_action :find_listing, except: :destroy
+
   def new
   end
 
@@ -7,14 +9,16 @@ class FavouritesController < ApplicationController
     @favourite.user = current_user
     @favourite.listing = @listing
     if @favourite.save
-      redirect_to user_path(current_user)
+      redirect_to request.referrer
     else
       flash.alert = "Unable to save transaction."
     end
   end
 
   def destroy
-
+    @favourite = Favourite.find(params[:id])
+    @favourite.destroy
+    redirect_to request.referrer
   end
 
   private
