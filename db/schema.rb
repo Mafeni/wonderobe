@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_190557) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "purchase_id", null: false
-    t.string "user_type"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id"
   end
 

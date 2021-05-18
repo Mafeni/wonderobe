@@ -3,7 +3,7 @@
   <div class="row mt-5 d-flex">
 
     <div class="col-sm-12 col-md-4">
-      <% if current_user.photo.attached? %>
+      <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill", class:'avatar-profile'%>
       <% else %>
         <i class="fas fa-user-circle fa-2x" style="font-size: 200px"></i>
@@ -56,29 +56,38 @@
     <div class="col-12">
       <% if @user == current_user %>
         <h2>My Purchases (<%= @user.purchases.count %>)</h2>
-      <% else %>
-        <h2><%= @user.first_name %>'s Purchases (<%= @user.purchases.count %>)</h2>
+        <div class="card-deck">
+          <% @user.purchases.each do |transaction|%>
+            <%= render './shared/transaction_card', transaction: transaction %>
+          <% end %>
+        </div>
       <% end %>
-      <div class="card-deck">
-        <% @user.purchases.each do |transaction|%>
-          <%= render './shared/transaction_card', transaction: transaction %>
-        <% end %>
-      </div>
-      <h2>My wishlist (<%= @user.favourites.count %>)</h2>
-      <div class="card-deck">
-        <% @user.favourites.each do |favourite|%>
-          <%= render './shared/card', listing: favourite.listing %>
-        <% end %>
-      </div>
     </div>
   </div>
-
+  
+  <div class="row mt-5 mb-4">
+    <div class="col-12">
+      <% if @user == current_user %>
+        <h2>My wishlist (<%= @user.favourites.count %>)</h2>
+        <div class="card-deck">
+          <% @user.favourites.each do |favourite|%>
+            <%= render './shared/card', listing: favourite.listing %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
   <div class="row mt-5 mb-5">
     <div class="col-12">
-      <h2>My reviews(<%= @reviews.count %>)</h2>
+      <h2>What others think (<%= @reviews.count %>)</h2>
       <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
-        <% @reviews.each do |review|%>
-          <%= render './shared/review_card', review: review %>
+        <% if @reviews.present? %>
+          <% @reviews.each do |review|%>
+            <%= render './shared/review_card', review: review %>
+          <% end %>
+        <% else %>
+          <p><%= @user.first_name %> has no reviews yet.</p>
         <% end %>
       </div>
     </div>
