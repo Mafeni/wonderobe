@@ -1,0 +1,16 @@
+.mapboxgl-popup {
+  max-width: 250px;
+  padding: 1rem;
+}
+
+.mapboxgl-popup-content {
+  padding: 0px !important;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.infoCard{
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -4px 4px 4px rgba(0,0,0,0.1);
+}
