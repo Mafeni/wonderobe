@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { initStarRating } from '../plugins/init_star_rating';
 
 // var $ = require( "jquery" )
 // require("slick-carousel")
@@ -49,4 +50,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // $('.scroller').slick()
   initAutocomplete();
+  initStarRating();
 });
