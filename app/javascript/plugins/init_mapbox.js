@@ -32,6 +32,15 @@ const initMapbox = () => {
     const map = buildMap(mapElement);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: false
+      },
+      trackUserLocation: true,
+      fitBoundsOptions: {maxZoom:7}
+      })
+    );
   };
 }
 
