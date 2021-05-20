@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  after_create :set_country
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -13,4 +14,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def set_country
+    user_posn = Geocoder.search([self.latitude, self.longitude])
+    self.country = user_posn[0].country_code
+    self.save
+  end
 end

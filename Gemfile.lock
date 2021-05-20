@@ -316,8 +316,8 @@ DEPENDENCIES
   emoji_flag
   faker
   font-awesome-sass
-  iso_country_codes
   geocoder
+  iso_country_codes
   jbuilder (~> 2.7)
   listen (~> 3.2)
   normalize_country

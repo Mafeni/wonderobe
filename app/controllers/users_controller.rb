@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
+    set_country
     redirect_to user_path(@user)
   end
 
@@ -31,5 +32,11 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def set_country
+    user_posn = Geocoder.search([@user.latitude, @user.longitude])
+    @user.country = user_posn[0].country_code
+    @user.save
   end
 end
