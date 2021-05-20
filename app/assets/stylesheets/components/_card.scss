@@ -1,11 +1,11 @@
 .card {
   display: grid;
   width: 18rem;
-  height:320px;
+  height:340px;
   border-radius: 4px;
   border: 0;
   box-shadow: -4px 4px 4px grey;
-  margin: 14px;
+  margin: 3px 14px 14px;
 }
 
 .card-link{
@@ -132,3 +132,13 @@
   bottom:10px;
   width: 100%;
 }
+
+.card-links2{
+  position:absolute;
+  text-align:center;
+  bottom:-4px;
+  width: 100%;
+  font-size: 15px;
+  color: grey;
+}
+

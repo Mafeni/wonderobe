@@ -22,13 +22,17 @@
         <% if @listing.hits(1.month.ago) > 1 %>
           <i class="fas fa-eye"></i> <span class='fw-lighter'>This listing was viewed <%= @listing.hits(1.month.ago) %> times this month</span>
         <% else %>
-          <i class="fas fa-eye"></i> <span class='fw-lighter'>You are the first person to view this viewing this month</span>
+          <i class="fas fa-eye"></i> <span class='fw-lighter'>You are the first person to view this listing this month</span>
         <% end %>
-        <h1 class='fw-light listingName'> 
-          <%= @listing.listing_name %>
+        <h1 class='fw-light listingName'>
+          <% if @top_listings.include? @listing %>
+            <h3>🔥 <%= @listing.listing_name %></h3>
+          <% else %>
+            <h3><%= @listing.listing_name %></h3>
+          <% end %>
           <% if @listing.favourites.find_by(user_id: current_user) %>
             <i class="fas fa-heart favourited-heart"></i>
-          <% end %>      
+          <% end %>
         </h1>
       </div>
 
@@ -39,7 +43,7 @@
         <p class='attribute'>Description: <%= @listing.description %></p>
       </div>
 
-  
+
       <% if @listing.user == current_user %>
         <div class="d-flex mb-5">
           <%= link_to "Edit", edit_listing_path(@listing), class:'btn m-2 d-flex' %>
@@ -56,16 +60,16 @@
             <% else %>
               <%= simple_form_for([@listing, @transaction]) do |f| %>
                 <%= f.submit 'Buy', class:'btn my-2 mr-2' %>
-              <% end %>        
+              <% end %>
               <% if @listing.favourites.find_by(user_id: current_user) %>
                 <%= link_to 'Delete from Wishlist'.html_safe, favourite_path(@listing.favourites.find_by(user_id: current_user)),
                   method: :delete,
                   class: "btn-offer m-2" %>
               <% else %>
                 <%= simple_form_for([@listing, @favourite]) do |f| %>
-                  <%= f.submit "Add to wishlist", class: "btn-offer m-2" %> 
+                  <%= f.submit "Add to wishlist", class: "btn-offer m-2" %>
                 <% end %>
-              <% end %> 
+              <% end %>
             <% end %>
           </div>
       <% end %>

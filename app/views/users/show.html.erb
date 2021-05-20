@@ -84,7 +84,7 @@
       <% end %>
     </div>
   </div>
-  
+
   <div class="row mt-5 mb-4">
     <div class="col-12">
       <% if @user == current_user %>
@@ -97,17 +97,25 @@
       <% end %>
     </div>
   </div>
-  
+
   <div class="row mt-5 mb-5">
     <div class="col-12">
-      <h2>What others think of the items <%= @user.first_name %> sold (<%= @reviews.count %>)</h2>
+      <% if @user == current_user %>
+        <h2>What others think of the items I sold (<%= @reviews.count %>)</h2>
+      <% else %>
+        <h2>What others think of the items <%= @user.first_name %> sold (<%= @reviews.count %>)</h2>
+      <% end %>
       <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
         <% if @reviews.present? %>
           <% @reviews.each do |review|%>
             <%= render './shared/review_card', review: review %>
           <% end %>
         <% else %>
-          <p><em><%= @user.first_name %> has no reviews yet.</em></p>
+            <% if @user == current_user %>
+              <p><em>You do no have any reviews yet.</em></p>
+            <% else %>
+              <p><em><%= @user.first_name %> has no reviews yet.</em></p>
+            <% end %>
         <% end %>
       </div>
     </div>
