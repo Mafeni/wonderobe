@@ -35,6 +35,7 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import places from 'places.js';
+import { initMapbox } from '../plugins/init_mapbox';
 
 const initAutocomplete = () => {
   const addressInput = document.getElementById('user_address');
@@ -43,10 +44,10 @@ const initAutocomplete = () => {
   }
 };
 
-
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // $('.scroller').slick()
   initAutocomplete();
+  initMapbox();
 });
