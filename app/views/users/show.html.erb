@@ -38,12 +38,11 @@
       <% else %>
         <h2 class = "inline-h2"><%= @user.first_name %>'s Listings (<%= @user.listings.count %>)</h2>
       <% end %>
-
       <% if user_signed_in? && @user == current_user %>
-          <%= link_to '+ Add a listing', new_listing_path, class:"btn btn-primary" %>
+          <%= link_to '<i class="fas fa-plus-square"></i>'.html_safe, new_listing_path, style: "font-size: 28px; margin: 0 4px 0 12px;" %>
       <% end %>
       <button type="button" class="collapsible"><i class="fas fa-eye"></i></button>
-      <div class="card-deck active-card">
+      <div class="card-deck active-card mb-4">
         <% @user.listings.each do |listing| %>
           <%= render './shared/card', listing: listing %>
         <% end %>
@@ -51,7 +50,7 @@
     </div>
   </div>
 
-  <div class="row mt-5 mb-4">
+  <div class="row mb-4">
     <div class="col-12">
       <% if @user == current_user %>
         <h2 class = "inline-h2">My Purchases (<%= @user.purchases.count %>)</h2>
@@ -65,7 +64,7 @@
     </div>
   </div>
   
-  <div class="row mt-5 mb-4">
+  <div class="row mb-4">
     <div class="col-12">
       <% if @user == current_user %>
         <h2 class = "inline-h2">My wishlist (<%= @user.favourites.count %>)</h2>
