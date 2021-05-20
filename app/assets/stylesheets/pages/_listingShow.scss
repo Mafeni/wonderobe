@@ -18,8 +18,10 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   border-radius: 4px;
   transition: transform 450ms;
+  height: 80px;
+  width: 70px;
   &:hover{
-    z-index: 5;
-    transform: scale(2);
+    z-index: 2;
+    transform: scale(1.2);
   }
 }

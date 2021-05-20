@@ -9,7 +9,7 @@
         <ul class='list-inline'>
           <% @listing.photos.each do |photo| %>
            <li class="list-inline-item">
-              <%= cl_image_tag photo.key, width:70, height: 80, crop: :fill, class:'small-pic' %>
+              <%= cl_image_tag photo.key, crop: :fill, class:'small-pic' %>
             </li>
           <% end %>
         </ul>
