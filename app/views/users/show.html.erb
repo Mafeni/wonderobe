@@ -57,7 +57,7 @@
       <% if @user == current_user %>
         <h2>My Listings (<%= @user.listings.count %>)</h2>
       <% else %>
-        <h2><%= @user.first_name %>'s Listings (<%= @user.listings.count %>)</h2>
+        <h2><%= @user.first_name %>'s Listings (<%= @user.listings.where("purchased_status = false").count%>)</h2>
       <% end %>
 
       <% if user_signed_in? && @user == current_user %>
@@ -66,7 +66,9 @@
 
       <div class="card-deck">
         <% @user.listings.each do |listing| %>
-          <%= render './shared/card', listing: listing %>
+          <% unless listing.purchased_status %>
+            <%= render './shared/card', listing: listing %>
+          <% end %>
         <% end %>
       </div>
     </div>
