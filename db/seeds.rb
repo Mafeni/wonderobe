@@ -35,7 +35,7 @@ users['results'].each do |user|
     password: Faker::Internet.password(min_length: 7),
     first_name:user["name"]["first"],
     last_name:user["name"]["last"],
-    address:[user["location"]["street"]["number"],user["location"]["street"]["name"],user["location"]["city"]].join(" "),
+    address:user["location"]["city"],
     country:user["location"]["country"]
   })
   user_new.photo.attach(io: file, filename: 'user_pic.png', content_type: 'image/png')

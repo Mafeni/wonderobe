@@ -17,10 +17,14 @@
               <p>🤍</p>
             </div>
           </div>
-			<% if transaction.user == current_user %>
-              <div class="card-links">
-                <%= link_to "review", new_purchase_review_path(transaction, @review) %>
-			  </div>
+			<% if transaction.user == current_user%>
+  				<% if transaction.reviews.empty? %>
+            <div class="card-links">
+  				    <%= link_to "✏️ Write a review", new_purchase_review_path(transaction, @review) %>
+            </div>
+          <% elsif transaction.reviews.any? %>
+            <p class="card-links2"><em>You have already written a review.</em></p>
+  				<% end %>
 			<% end %>
 	   </div>
 	</a>
