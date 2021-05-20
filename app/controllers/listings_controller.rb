@@ -11,8 +11,6 @@ class ListingsController < ApplicationController
     end
     @favourite = Favourite.new
     @users = User.where.not(latitude: nil, longitude: nil)
-    @users_near_me = User.near(current_user, 10)
-
     @markers = @users.geocoded.map do |user|
       { lat: user.latitude,
         lng: user.longitude,
