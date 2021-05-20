@@ -1,0 +1,24 @@
+  <% if @reviews.present? %>
+    <%= '<i class="fas fa-star"></i>'.html_safe * @rounded_average_of_ratings %><%= '<i class="far fa-star"></i>'.html_safe * (5-@rounded_average_of_ratings) %>
+    <%= @average_of_ratings.round(1).to_f %>
+  <% else %>
+    <% if @user == current_user %>
+      <p><em>You do not have any reviews yet</em></p>
+    <% else %>
+      <p><em>No reviews yet for <%= @user.first_name %></em></p>
+    <% end %>
+  <% end %>
+  <% if @user == current_user %>
+    <% name = "You" %>
+    <% tense = "have" %>
+  <% else %>
+    <% name = @user.first_name %>
+    <% tense = "has" %>
+  <% end %>
+  <% if @user.reviews.count > 1 %>
+    <p><i class="fas fa-pencil-alt"></i> <%= name %> wrote <%= @user.reviews.count %> reviews.</p>
+  <% elsif @user.reviews.count == 1 %>
+    <p><i class="fas fa-pencil-alt"></i> <%= name %> wrote <%= @user.reviews.count %> review.</p>
+  <% else %>
+    <p><i class="fas fa-pencil-alt"></i> <%= name %> <%= tense %> not written any reviews yet.</p>
+  <% end %>
