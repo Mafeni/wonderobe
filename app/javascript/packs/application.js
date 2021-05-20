@@ -38,7 +38,7 @@ import { initStarRating } from '../plugins/init_star_rating';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { changePic } from '../plugins/gallery'
 import { initMapbox } from '../plugins/init_mapbox';
-
+import { collapseHeaders } from '../plugins/collapsible_headers';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -48,4 +48,5 @@ document.addEventListener('turbolinks:load', () => {
   changePic();
   initMapbox();
   initStarRating();
+  collapseHeaders();
 });

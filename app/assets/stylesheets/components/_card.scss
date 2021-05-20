@@ -133,6 +133,19 @@
   width: 100%;
 }
 
+
+.card-deck{
+  display:none;
+}
+
+.active-card{
+  display:flex;
+}
+
+.inline-h2{
+  display:inline-block;
+}
+
 .card-links2{
   position:absolute;
   text-align:center;
@@ -141,4 +154,5 @@
   font-size: 15px;
   color: grey;
 }
+
 
