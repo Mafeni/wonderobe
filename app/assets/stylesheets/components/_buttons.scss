@@ -38,3 +38,20 @@
 .purchased-button{
   background-color: $medium-gray;
 }
+
+
+.collapsible {
+  display: inline-block;
+  color: $blue;
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 24px;
+}
+
+
+.active, .collapsible:hover {
+  color: $black;
+}

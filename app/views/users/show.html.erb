@@ -33,18 +33,17 @@
 
   <div class="row mt-5">
     <div class="col-12">
-
       <% if @user == current_user %>
-        <h2>My Listings (<%= @user.listings.count %>)</h2>
+        <h2 class = "inline-h2">My Listings (<%= @user.listings.count %>)</h2>
       <% else %>
-        <h2><%= @user.first_name %>'s Listings (<%= @user.listings.count %>)</h2>
+        <h2 class = "inline-h2"><%= @user.first_name %>'s Listings (<%= @user.listings.count %>)</h2>
       <% end %>
 
       <% if user_signed_in? && @user == current_user %>
           <%= link_to '+ Add a listing', new_listing_path, class:"btn btn-primary" %>
       <% end %>
-
-      <div class="card-deck">
+      <button type="button" class="collapsible"><i class="fas fa-eye"></i></button>
+      <div class="card-deck active-card">
         <% @user.listings.each do |listing| %>
           <%= render './shared/card', listing: listing %>
         <% end %>
@@ -55,8 +54,9 @@
   <div class="row mt-5 mb-4">
     <div class="col-12">
       <% if @user == current_user %>
-        <h2>My Purchases (<%= @user.purchases.count %>)</h2>
-        <div class="card-deck">
+        <h2 class = "inline-h2">My Purchases (<%= @user.purchases.count %>)</h2>
+        <button type="button" class="collapsible"><i class="fas fa-eye"></i></button>
+        <div class="card-deck active-card">
           <% @user.purchases.each do |transaction|%>
             <%= render './shared/transaction_card', transaction: transaction %>
           <% end %>
@@ -68,8 +68,9 @@
   <div class="row mt-5 mb-4">
     <div class="col-12">
       <% if @user == current_user %>
-        <h2>My wishlist (<%= @user.favourites.count %>)</h2>
-        <div class="card-deck">
+        <h2 class = "inline-h2">My wishlist (<%= @user.favourites.count %>)</h2>
+        <button type="button" class="collapsible"><i class="fas fa-eye"></i></button>
+        <div class="card-deck active-card">
           <% @user.favourites.each do |favourite|%>
             <%= render './shared/card', listing: favourite.listing %>
           <% end %>
@@ -80,8 +81,9 @@
   
   <div class="row mt-5 mb-5">
     <div class="col-12">
-      <h2>What others think (<%= @reviews.count %>)</h2>
-      <div class="cards-listing row d-flex justify-content-flex-start align-items-center">
+      <h2 class = "inline-h2">What others think (<%= @reviews.count %>)</h2>
+      <button type="button" class="collapsible"><i class="fas fa-eye"></i></button>
+      <div class="card-deck active-card">
         <% if @reviews.present? %>
           <% @reviews.each do |review|%>
             <%= render './shared/review_card', review: review %>
