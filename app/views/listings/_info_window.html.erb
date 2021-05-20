@@ -1,7 +1,11 @@
 <div class="infoCard">
   <div class="row p-2">
     <div class="col-4">
-      <%= cl_image_tag "#{user.photo.key}", class: "card-img", height:60, width:60, radius: "max", crop: :fill%>
+      <% if user.photo.attached? %>
+        <%= cl_image_tag "#{user.photo.key}", class: "card-img", height:60, width:60, radius: "max", crop: :fill %>
+      <% else %>
+        <i class="fas fa-user-circle fa-2x" style="font-size: 60px"></i>
+      <% end %>
     </div>
     <div class='col-8'>
       <h2><%= link_to user.first_name, user_path(user), class:'card-link' %></h2>
