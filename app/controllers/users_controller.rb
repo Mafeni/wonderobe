@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @favourite = Favourite.new
     @top_listings = Listing.most_hit(1.month.ago, 9)
-    @reviews = Review.all.select {|review| review.purchase.listing.user == @user}
+    @reviews = Review.all.select { |review| review.purchase.listing.user == @user }
     if @reviews.present?
       @sum_of_ratings = 0
       @reviews.each do |review|
