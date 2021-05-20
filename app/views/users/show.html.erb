@@ -15,7 +15,11 @@
       <% else %>
         <h1><%= @user.first_name %></h1>
       <% end %>
-        <h4><%= "#{@user.country}" %></h4>
+        <% if @user == current_user %>
+          <h4><%= IsoCountryCodes.find(@user.country.to_s).name %> <%= NormalizeCountry(@user.country, :to => :emoji)%></h4>
+        <% else %>
+          <h4><%= @user.country %> <%= NormalizeCountry(@user.country, :to => :emoji)%></h4>
+        <% end %>
       <% if @reviews.present? %>
         <%= '<i class="fas fa-star"></i>'.html_safe * @rounded_average_of_ratings %><%= '<i class="far fa-star"></i>'.html_safe * (5-@rounded_average_of_ratings) %>
         <%= @average_of_ratings.round(1).to_f %>
@@ -90,7 +94,7 @@
             <%= render './shared/review_card', review: review %>
           <% end %>
         <% else %>
-          <p><%= @user.first_name %> has no reviews yet.</p>
+          <p><em><%= @user.first_name %> has no reviews yet.</em></p>
         <% end %>
       </div>
     </div>

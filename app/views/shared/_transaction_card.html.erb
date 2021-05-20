@@ -19,7 +19,7 @@
           </div>
 			<% if transaction.user == current_user %>
               <div class="card-links">
-                <%= link_to "review", new_purchase_review_path(transaction, @review) %>
+                <%= link_to "✏️ Write a review", new_purchase_review_path(transaction, @review) %>
 			  </div>
 			<% end %>
 	   </div>
