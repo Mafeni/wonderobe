@@ -7,6 +7,8 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new
     @purchase.user = current_user
+    @listing.purchased_status = true
+    @listing.save
     @purchase.listing = @listing
     if @purchase.save
       redirect_to user_path(current_user)

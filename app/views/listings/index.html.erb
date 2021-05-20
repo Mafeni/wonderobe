@@ -15,7 +15,15 @@
 
       <div class="cards-listing row d-flex justify-content-center align-items-center">
         <% @listings.each do |listing| %>
-      		<%= render './shared/card', listing: listing %>
+          <% unless listing.purchased_status %>
+      		  <%= render './shared/card', listing: listing %>
+          <% end %>
         <% end %>
+      </div>
+
+      <div id="map"
+           style="width: 100%; height: 600px;"
+           data-markers="<%= @markers.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
 </div>
