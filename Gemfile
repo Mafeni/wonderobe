@@ -33,6 +33,8 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'faker'
 # bootstrap 5.0
 gem 'bootstrap', '~> 5.0.1'
+# geocoder
+gem 'geocoder'
 
 gem 'country_select', '~> 5.0', '>= 5.0.1'
 

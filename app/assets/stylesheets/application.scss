@@ -7,8 +7,14 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "jquery-bar-rating/dist/themes/css-stars"; 
 
 // Your CSS partials
 @import "components/index";
 @import "components/carousel";
 @import "pages/index";
+
+
+.content {
+  min-height: calc(100vh - 320px)
+}

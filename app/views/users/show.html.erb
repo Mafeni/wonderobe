@@ -1,9 +1,9 @@
-<div class="container min-vh-100">
+<div class="container">
 
   <div class="row mt-5 d-flex">
 
     <div class="col-sm-12 col-md-4">
-      <% if current_user.photo.attached? %>
+      <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill", class:'avatar-profile'%>
       <% else %>
         <i class="fas fa-user-circle fa-2x" style="font-size: 200px"></i>
@@ -84,7 +84,20 @@
       <% end %>
     </div>
   </div>
-
+  
+  <div class="row mt-5 mb-4">
+    <div class="col-12">
+      <% if @user == current_user %>
+        <h2>My wishlist (<%= @user.favourites.count %>)</h2>
+        <div class="card-deck">
+          <% @user.favourites.each do |favourite|%>
+            <%= render './shared/card', listing: favourite.listing %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
   <div class="row mt-5 mb-5">
     <div class="col-12">
       <h2>What others think of the items <%= @user.first_name %> sold (<%= @reviews.count %>)</h2>
