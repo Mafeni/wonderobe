@@ -18,17 +18,19 @@
             </div>    </a>
             <div class="card-right">
               <p><%= listing.size %></p>
-              <p>
-                <% if listing.favourites.find_by(user_id: current_user) %>
-                  <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user)),
-                                      method: :delete,
-                                      class: "favourited-heart" %>
-                <% else %>
-                  <%= simple_form_for([listing, @favourite]) do |f| %>
-                    <%= f.submit "🤍", class: "favourite-btn" %> 
+              <% if listing.user != current_user %>
+                <p>
+                  <% if listing.favourites.find_by(user_id: current_user) %>
+                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user)),
+                                        method: :delete,
+                                        class: "favourited-heart" %>
+                  <% else %>
+                    <%= simple_form_for([listing, @favourite]) do |f| %>
+                      <%= f.submit "🤍", class: "favourite-btn" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </p>
+                </p>
+              <% end %>
             </div>
           </div>
             <% if listing.user == current_user %>
