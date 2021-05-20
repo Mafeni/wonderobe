@@ -1,0 +1,17 @@
+<div class="infoCard">
+  <div class="row p-2">
+    <div class="col-4">
+      <%= cl_image_tag "#{user.photo.key}", class: "card-img", height:60, width:60, radius: "max", crop: :fill%>
+    </div>
+    <div class='col-8'>
+      <h2><%= link_to user.first_name, user_path(user), class:'card-link' %></h2>
+      <h5 class='text-secondary'>
+      <% if  user.listings.count == 1%>
+        <%= link_to "#{user.listings.count} Listing", user_path(user), class:'card-link' %>
+      <% else %>
+        <%= link_to "#{user.listings.count} Listings", user_path(user), class:'card-link' %> Listings
+      <% end %>
+      </h5>
+    </div>
+  </div>
+</div>

@@ -35,14 +35,9 @@ import { initStarRating } from '../plugins/init_star_rating';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import places from 'places.js';
-
-const initAutocomplete = () => {
-  const addressInput = document.getElementById('user_address');
-  if (addressInput) {
-    places({ container: addressInput });
-  }
-};
+import { initAutocomplete } from '../plugins/init_autocomplete';
+import { changePic } from '../plugins/gallery'
+import { initMapbox } from '../plugins/init_mapbox';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -50,5 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // $('.scroller').slick()
   initAutocomplete();
+  changePic();
+  initMapbox();
   initStarRating();
 });

@@ -1,23 +1,40 @@
 .btn {
   text-decoration: none;
-  background-color: #3C64B1;
-  color: white;
+  background-color: $blue;
+  color: $white;
   padding: 8px 32px;
   border-radius: 4px;
   &:hover{
     opacity: 90%;
-    color: white;
+    color: $white;
   }
 }
 
 .btn-offer {
   text-decoration: none;
-  background-color: white;
-  color: #3C64B1;
+  background-color: $white;
+  color: $blue;
   padding: 8px 24px;
   border-radius: 4px;
-  border: 2px solid #3C64B1;
+  border: 2px solid $blue;
   &:hover{
-    color: #2C4F94;
+    color: $dark-blue;
   }
+}
+
+.favourite-btn{
+  background-color: transparent;
+  border: none;
+}
+
+.favourited-heart{
+  color: $red;
+  font-size: 24px;
+  &:hover{
+    color: $black;
+  }
+}
+
+.purchased-button{
+  background-color: $medium-gray;
 }

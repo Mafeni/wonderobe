@@ -3,7 +3,7 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :email %>
-    <%= f.input :address %>
+    <%= f.input :address, as: :string %>
     <%= f.input :country %>
     <%= f.input :photo, as: :file, input_html: { multiple: false } %>
     <%= f.submit %>

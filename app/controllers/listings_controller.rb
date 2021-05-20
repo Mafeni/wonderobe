@@ -9,9 +9,18 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+    @favourite = Favourite.new
+    @users = User.where.not(latitude: nil, longitude: nil)
+    @markers = @users.geocoded.map do |user|
+      { lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+      }
+    end
   end
 
   def show
+    @favourite = Favourite.new
     @listing.punch(request)
     @top_listings = Listing.most_hit(1.month.ago, 9)
     @reviews = Review.all.select { |review| review.purchase.listing.user == @listing.user }
