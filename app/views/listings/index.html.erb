@@ -15,7 +15,9 @@
 
       <div class="cards-listing row d-flex justify-content-center align-items-center">
         <% @listings.each do |listing| %>
-      		<%= render './shared/card', listing: listing %>
+          <% unless listing.purchased_status %>
+      		  <%= render './shared/card', listing: listing %>
+          <% end %>
         <% end %>
       </div>
 
