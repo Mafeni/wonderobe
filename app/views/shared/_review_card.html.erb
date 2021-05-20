@@ -1,13 +1,21 @@
 <div class="card review-card">
-  <div class="card-left">
-	<% if review.purchase.user.photo.attached? %>
-		<%= cl_image_tag review.purchase.user.photo.key, class: "card-img", height:80, width:100, radius: "max", crop: :fill %>
-	<% else %>
-       <i class="fas fa-user-circle fa-2x" style= "font-size: 80px;"></i>
-    <% end %>
+  <div class="top-user">
+    <div class="card-left">
+  	<% if review.purchase.user.photo.attached? %>
+  		<%= cl_image_tag review.purchase.user.photo.key, class: "card-img", height:80, width:100, radius: "max", crop: :fill %>
+  	<% else %>
+         <i class="fas fa-user-circle fa-2x" style= "font-size: 80px;"></i>
+      <% end %>
+    </div>
+    <div class="card-right">
+      <h5><%= review.purchase.user.first_name %></h5>
+      <p><i class="fas fa-map-marker-alt"></i> <%= IsoCountryCodes.find(review.purchase.user.country).name %> <%= NormalizeCountry(review.purchase.user.country, :to => :emoji)%>  </p>
+      <p><em>Reviewed on <%= "#{review.purchase.created_at.day} #{Date::MONTHNAMES[review.purchase.created_at.month]} #{review.purchase.created_at.year}" %></em></p>
+    </div>
   </div>
-  <div class="card-right">
-    <p><%= '<i class="fas fa-star"></i>'.html_safe * review.rating %><%= '<i class="far fa-star"></i>'.html_safe * (5- review.rating) %></p>
-    <p class= "comment"><em>"<%= review.comment %>"</em></p>
+  <div class="bottom-comment">
+      <h4><%= link_to "#{review.purchase.listing.listing_name}", listing_path %></h4>
+      <p><%= '<i class="fas fa-star"></i>'.html_safe * review.rating %><%= '<i class="far fa-star"></i>'.html_safe * (5- review.rating) %> <%= review.rating.to_i %>/5</p>
+      <p class= "comment">"<%= review.comment %>"</p>
   </div>
 </div>
