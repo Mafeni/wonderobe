@@ -64,7 +64,20 @@
       <% end %>
     </div>
   </div>
-
+  
+  <div class="row mt-5 mb-4">
+    <div class="col-12">
+      <% if @user == current_user %>
+        <h2>My wishlist (<%= @user.favourites.count %>)</h2>
+        <div class="card-deck">
+          <% @user.favourites.each do |favourite|%>
+            <%= render './shared/card', listing: favourite.listing %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
   <div class="row mt-5 mb-5">
     <div class="col-12">
       <h2>What others think (<%= @reviews.count %>)</h2>

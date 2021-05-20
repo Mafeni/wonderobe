@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2021_05_18_193822) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_favourites_on_listing_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "listing_name"
     t.float "price"
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_05_18_193822) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favourites", "listings"
+  add_foreign_key "favourites", "users"
   add_foreign_key "listings", "users"
   add_foreign_key "purchases", "listings"
   add_foreign_key "purchases", "users"
