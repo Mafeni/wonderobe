@@ -3,11 +3,21 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :update, :edit, :destroy]
 
   def index
+
     @top_listings = Listing.most_hit(1.month.ago, 9)
     if params[:query].present?
       @listings = Listing.search_by_listing_name_and_description(params[:query])
     else
       @listings = Listing.all
+    end
+
+    @users = User.where.not(latitude: nil, longitude: nil)
+
+    @markers = @users.geocoded.map do |user|
+      { lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+      }
     end
   end
 
