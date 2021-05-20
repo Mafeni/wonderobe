@@ -40,6 +40,11 @@ gem 'country_select', '~> 5.0', '>= 5.0.1'
 
 gem "punching_bag"
 
+gem "iso_country_codes"
+gem 'emoji_flag'
+gem "normalize_country"
+
+
 
 #PG search
 gem 'pg_search', '~> 2.3.0'

@@ -20,9 +20,9 @@
 
       <div class="mb-3">
         <% if @listing.hits(1.month.ago) > 1 %>
-          <span class='fw-lighter'>This listing was viewed <%= @listing.hits(1.month.ago) %> times this month</span>
+          <i class="fas fa-eye"></i> <span class='fw-lighter'>This listing was viewed <%= @listing.hits(1.month.ago) %> times this month</span>
         <% else %>
-          <span class='fw-lighter'>You are the first person to view this viewing this month</span>
+          <i class="fas fa-eye"></i> <span class='fw-lighter'>You are the first person to view this viewing this month</span>
         <% end %>
         <h1 class='fw-light listingName'> 
           <%= @listing.listing_name %>
@@ -85,7 +85,7 @@
 
         <div class="ml-2">
           <a href=<%= user_path(@listing.user) %>>
-            <p class='m-0'><%= @listing.user.first_name %></p>
+            <p class='m-0'><%= @listing.user.first_name %> <%= NormalizeCountry(@listing.user.country, :to => :emoji)%></p>
             <div class="d-flex">
               <% if @reviews.present? %>
                 <%= '<i class="fas fa-star"></i>'.html_safe * @rounded_average_of_ratings %><%= '<i class="far fa-star"></i>'.html_safe * (5-@rounded_average_of_ratings) %>
