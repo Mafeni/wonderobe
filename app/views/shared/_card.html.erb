@@ -6,7 +6,7 @@
           <% end %>
           <div class="card-img-overlay">
             <p><span><%= "£#{listing.price.round(2)}" %></span></p>
-            <% if @top_listings.include? listing %>
+            <% if @top_listings.include?(listing) %>
               <p class ="hot-listing"><i class="fab fa-hotjar"></i></p>
             <% elsif listing.created_at.to_date == Date.today %>
               <p class ="new-listing">New</p>
