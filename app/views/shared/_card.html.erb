@@ -22,11 +22,12 @@
               <% if listing.user != current_user %>
                 <p>
                   <% if listing.favourites.find_by(user_id: current_user) %>
-                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user), anchor: "card-#{listing.id}"),
+                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user)),
                                         method: :delete,
+                                        remote: true,
                                         class: "favourited-heart" %>
                   <% else %>
-                    <%= simple_form_for([listing, @favourite], anchor: "card-#{listing.id}") do |f| %>
+                    <%= simple_form_for([listing, @favourite], remote: true) do |f| %>
                       <%= f.submit "🤍", class: "favourite-btn" %>
                     <% end %>
                   <% end %>
@@ -39,6 +40,7 @@
                 <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_listing_path(listing), class: "mr-2" %>
                 <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, listing_path(listing), class: "ml-2" ,
                                       method: :delete,
+                                      remote: true,
                                       data: { confirm: "Are you sure?" } %>
               </div>
             <% end %>
