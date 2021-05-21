@@ -11,7 +11,7 @@ class FavouritesController < ApplicationController
     if @favourite.save
       redirect_to request.referrer
     else
-      flash.alert = "Unable to save transaction."
+      flash.alert = "Unable to add to favourites"
     end
   end
 

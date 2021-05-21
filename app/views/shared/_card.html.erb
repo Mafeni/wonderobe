@@ -1,4 +1,4 @@
-    <div class="col-auto mb-3">
+    <div id = "card-#{<%=listing.id %>}" class="col-auto mb-3">
       <a class="card-link" href=<%= listing_path(listing) %>>
         <div class="card">
           <% if listing.photos.attached? %>
@@ -22,11 +22,11 @@
               <% if listing.user != current_user %>
                 <p>
                   <% if listing.favourites.find_by(user_id: current_user) %>
-                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user)),
+                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user), anchor: "card-#{listing.id}"),
                                         method: :delete,
                                         class: "favourited-heart" %>
                   <% else %>
-                    <%= simple_form_for([listing, @favourite]) do |f| %>
+                    <%= simple_form_for([listing, @favourite], anchor: "card-#{listing.id}") do |f| %>
                       <%= f.submit "🤍", class: "favourite-btn" %>
                     <% end %>
                   <% end %>
@@ -43,5 +43,4 @@
               </div>
             <% end %>
       </div>
-
     </div>

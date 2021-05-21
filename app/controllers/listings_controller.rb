@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :update, :edit, :destroy]
 
   def index
-    @top_listings = Listing.most_hit(1.month.ago, 9)
+    @top_listings = Listing.where(purchased_status: false).most_hit(1.month.ago, 9)
     if params[:query].present?
       @listings = Listing.search_by_listing_name_and_description(params[:query])
     else
@@ -22,7 +22,7 @@ class ListingsController < ApplicationController
   def show
     @favourite = Favourite.new
     @listing.punch(request)
-    @top_listings = Listing.most_hit(1.month.ago, 9)
+    @top_listings = Listing.where(purchased_status: false).most_hit(1.month.ago, 9)
     @reviews = Review.all.select { |review| review.purchase.listing.user == @listing.user }
     @transaction = Purchase.new
     if @reviews.present?
