@@ -4,6 +4,11 @@
     <div class="col-sm-12 col-md-6">
       <div class="m-2">
         <%= cl_image_tag @listing.photos.last.key, width:400, height: 550, crop: :fill, class:'picture' %>
+        <% if @top_listings.include? @listing %>
+          <p class ="hot-listing large-listing"><i class="fab fa-hotjar"></i></p>
+        <% elsif @listing.created_at.to_date == Date.today %>
+          <p class ="new-listing large-listing">New</p>
+        <% end %>
       </div>
       <div>
         <ul class='list-inline'>
@@ -17,7 +22,6 @@
     </div>
 
     <div class="col-sm-12 col-md-6 p-2">
-
       <div class="mb-3">
         <% if @listing.hits(1.month.ago) > 1 %>
           <i class="fas fa-eye"></i> <span class='fw-lighter'>This listing was viewed <%= @listing.hits(1.month.ago) %> times this month</span>
@@ -25,11 +29,7 @@
           <i class="fas fa-eye"></i> <span class='fw-lighter'>You are the first person to view this listing this month</span>
         <% end %>
         <h1 class='fw-light listingName'>
-          <% if @top_listings.include? @listing %>
-            <h3>🔥 <%= @listing.listing_name %></h3>
-          <% else %>
-            <h3><%= @listing.listing_name %></h3>
-          <% end %>
+          <h3><%= @listing.listing_name %></h3>
           <% if @listing.favourites.find_by(user_id: current_user) %>
             <i class="fas fa-heart favourited-heart"></i>
           <% end %>

@@ -84,6 +84,7 @@
   justify-content: space-between;
   max-width: 18rem;
   h3 {
+    width: 12rem;
     font-family: $main-font;
     font-style: normal;
     font-weight: bold;
@@ -91,7 +92,7 @@
     line-height: 19px;
     margin-top: 5px;
     margin-bottom: 5px;
-    white-space: wrap;
+    white-space: nowrap;
     overflow: hidden;
     padding-bottom: 5px;
     text-overflow: ellipsis;
