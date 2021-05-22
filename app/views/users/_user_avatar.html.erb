@@ -1,0 +1,7 @@
+    <div class="col-sm-12 col-md-4">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, :width=>300, :height=>300, :gravity=>"face", :radius=>"max", :crop=>"fill", class:'avatar-profile'%>
+      <% else %>
+        <i class="fas fa-user-circle fa-2x" style="font-size: 200px"></i>
+      <% end %>
+    </div>

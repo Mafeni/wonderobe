@@ -20,10 +20,10 @@
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "address" }%>
-        <%= f.input :country,
+<!--         f.input :country,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "country" }%>
+                    input_html: { autocomplete: "country" }%> -->
         <%= f.input :email,
                     required: true,
                     autofocus: true,
@@ -35,7 +35,10 @@
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
-        <%= f.input :photo %>
+        <%= f.input :photo,
+                    input_html: { class: 'd-none' },
+                    label_html: { class: 'upload-btn' },
+                    label: '📷 Upload a photo' %>
       </div>
 
       <div class="form-actions">

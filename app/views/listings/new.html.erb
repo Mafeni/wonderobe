@@ -5,7 +5,11 @@
     <%= f.input :size, collection: @sizes %>
     <%= f.input :condition, collection: @conditions %>
     <%= f.input :description %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }  %>
+    <%= f.input :photos,
+            as: :file,
+            input_html: { multiple: true, class: 'd-none', id:'photo-input' },
+            label_html: { class: 'upload-btn' },
+            label: '📷 Upload listing photos' %>
     <%= f.submit class: "btn btn-primary" %>
     <% end %>
 </div>
