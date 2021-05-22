@@ -2,18 +2,18 @@
   <div class="row p-2">
     <div class="col-4">
       <% if user.photo.attached? %>
-        <%= cl_image_tag "#{user.photo.key}", class: "card-img", height:60, width:60, radius: "max", crop: :fill %>
+        <%= cl_image_tag "#{user.photo.key}", crop: :fill, class: 'info-avatar' %>
       <% else %>
         <i class="fas fa-user-circle fa-2x" style="font-size: 60px"></i>
       <% end %>
     </div>
     <div class='col-8'>
-      <h2><%= link_to user.first_name, user_path(user), class:'card-link' %></h2>
+      <h3 class='name'><%= link_to user.first_name, user_path(user) %></h3>
       <h5 class='text-secondary'>
       <% if  user.listings.count == 1%>
-        <%= link_to "#{user.listings.count} Listing", user_path(user), class:'card-link' %>
+        <%= link_to "#{user.listings.count} Listing", user_path(user), class:'listing-link' %>
       <% else %>
-        <%= link_to "#{user.listings.count} Listings", user_path(user), class:'card-link' %> Listings
+        <%= link_to "#{user.listings.count} Listings", user_path(user), class:'listing-link' %>
       <% end %>
       </h5>
     </div>
