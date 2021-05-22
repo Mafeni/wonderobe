@@ -1,5 +1,5 @@
-import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 
 const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -11,8 +11,15 @@ const buildMap = (mapElement) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
+    var currentUserColor = "#85A2FF";
+    if(marker.currentUser) {
+      currentUserColor = "#BA0066";
+      console.log(currentUserColor)
+    };
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow)
-    new mapboxgl.Marker()
+    new mapboxgl.Marker({
+        color:currentUserColor
+      })
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map)
       .setPopup(popup)

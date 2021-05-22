@@ -14,7 +14,8 @@ class ListingsController < ApplicationController
     @markers = @users.geocoded.map do |user|
       { lat: user.latitude,
         lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
+        currentUser: user == current_user
       }
     end
   end
