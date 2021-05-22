@@ -1,0 +1,5 @@
+<% if @user == current_user  %>
+  <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<% else %>
+  <h1><%= @user.first_name %></h1>
+<% end %>

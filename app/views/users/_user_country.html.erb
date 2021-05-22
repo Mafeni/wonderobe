@@ -1,0 +1,5 @@
+<% if @user == current_user %>
+  <h4><%= IsoCountryCodes.find(@user.country.to_s).name %> <%= NormalizeCountry(@user.country, :to => :emoji)%></h4>
+<% else %>
+  <h4><%= @user.country %> <%= NormalizeCountry(@user.country, :to => :emoji)%></h4>
+<% end %>

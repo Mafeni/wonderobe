@@ -1,0 +1,11 @@
+    <div class="col-12">
+      <% if @user == current_user %>
+        <h2 class = "inline-h2">My wishlist (<%= @user.favourites.count %>)</h2>
+        <button type="button" class="collapsible"><i class="fas fa-eye"></i></button>
+        <div class="card-deck active-card">
+          <% @user.favourites.each do |favourite|%>
+            <%= render './shared/card', listing: favourite.listing %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
