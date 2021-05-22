@@ -9,7 +9,7 @@
     </div>
     <div class="card-right">
       <h5><%= review.purchase.user.first_name %></h5>
-      <p><i class="fas fa-map-marker-alt"></i> <%= IsoCountryCodes.find(review.purchase.user.country).name %> <%= NormalizeCountry(review.purchase.user.country, :to => :emoji)%>  </p>
+      <p><i class="fas fa-map-marker-alt"></i> <%= NormalizeCountry(review.purchase.user.country, to: :short) %> <%= NormalizeCountry(review.purchase.user.country, :to => :emoji)%>  </p>
       <p><em>Reviewed on <%= "#{review.purchase.created_at.day} #{Date::MONTHNAMES[review.purchase.created_at.month]} #{review.purchase.created_at.year}" %></em></p>
     </div>
   </div>
