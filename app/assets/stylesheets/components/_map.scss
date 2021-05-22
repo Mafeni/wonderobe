@@ -84,3 +84,16 @@
   }
 }
 
+
+@media(max-width: 1500px) {
+  .cards-listing {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .cards-listing {
+    grid-template-columns: 1fr;
+  }
+}
+
