@@ -49,6 +49,22 @@
     width: 100px;
     height: 100px;
   }
+  display: grid;
+  border-radius: 4px;
+  border: 0;
+  box-shadow: -4px 4px 4px grey;
+  margin: 3px 14px 14px;
+  background-color: white;
+  white-space: normal;
+  p {
+    word-break: break-all;
+  }
+}
+
+.comment-scroll {
+  height: 100px;
+  overflow-y: scroll;
+  white-space: normal;
 }
 
 .top-user {
