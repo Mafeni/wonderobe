@@ -1,6 +1,6 @@
     <div class="col-12">
       <% if @user == current_user %>
-        <h2 class = "inline-h2">My Listings (<%= @user.listings.count %>)</h2>
+        <h2 class = "inline-h2">My Listings (<%= @user.listings.where(purchased_status: false).count %>)</h2>
       <% else %>
         <h2 class = "inline-h2"><%= @user.first_name %>'s Listings (<%= @user.listings.where("purchased_status = false").count%>)</h2>
       <% end %>
