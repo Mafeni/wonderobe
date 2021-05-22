@@ -1,7 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "cloth_icon.png" %>
-  <% end %>
+  <div class="logo-and-sitename">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "cloth_icon.png" %>
+    <% end %>
+    <h1 class='brand-name'>Wonderobe</h1>
+  </div>
 
   <%= form_tag listings_path, class: "form-inline", method: :get do %>
     <%= text_field_tag :query,

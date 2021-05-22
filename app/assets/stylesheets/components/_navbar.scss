@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -19,4 +21,14 @@
   z-index: 5;
   box-shadow: 0px 0px 10px 2px #888888;
   margin-bottom: 30px;
+}
+
+.logo-and-sitename {
+  display: flex;
+  margin-left: 5px;
+}
+
+.brand-name {
+ font-family: 'Dancing Script', cursive;
+ color: $blue;
 }
