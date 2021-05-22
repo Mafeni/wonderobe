@@ -1,4 +1,4 @@
-    <div class="col-auto mb-3">
+    <div id = "card-#{<%=listing.id %>}" class="col-auto mb-3">
       <a class="card-link" href=<%= listing_path(listing) %>>
         <div class="card">
           <% if listing.photos.attached? %>
@@ -6,14 +6,15 @@
           <% end %>
           <div class="card-img-overlay">
             <p><span><%= "£#{listing.price.round(2)}" %></span></p>
+            <% if @top_listings.include?(listing) %>
+              <p class ="hot-listing"><i class="fab fa-hotjar"></i></p>
+            <% elsif listing.created_at.to_date == Date.today %>
+              <p class ="new-listing">New</p>
+            <% end %>
           </div>
           <div class="card-body">
             <div class="card-left">
-              <% if @top_listings.include? listing %>
-                <h3>🔥 <%= listing.listing_name %></h3>
-              <% else %>
-                <h3><%= listing.listing_name %></h3>
-              <% end %>
+              <h3><%= listing.listing_name %></h3>
               <h4><%= listing.condition %></h4>
             </div>    </a>
             <div class="card-right">
@@ -23,9 +24,10 @@
                   <% if listing.favourites.find_by(user_id: current_user) %>
                     <%= link_to '<i class="fas fa-heart"></i>'.html_safe, favourite_path(listing.favourites.find_by(user_id: current_user)),
                                         method: :delete,
+                                        remote: true,
                                         class: "favourited-heart" %>
                   <% else %>
-                    <%= simple_form_for([listing, @favourite]) do |f| %>
+                    <%= simple_form_for([listing, @favourite], remote: true) do |f| %>
                       <%= f.submit "🤍", class: "favourite-btn" %>
                     <% end %>
                   <% end %>
@@ -35,13 +37,12 @@
           </div>
             <% if listing.user == current_user %>
               <div class="card-links">
-
-                <%= link_to "📝 Edit", edit_listing_path(listing) %>
-                <%= link_to "❌ Delete", listing_path(listing),
+                <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_listing_path(listing), class: "mr-2" %>
+                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, listing_path(listing), class: "ml-2" ,
                                       method: :delete,
+                                      remote: true,
                                       data: { confirm: "Are you sure?" } %>
               </div>
             <% end %>
       </div>
-
     </div>

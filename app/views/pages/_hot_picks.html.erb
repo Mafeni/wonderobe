@@ -1,14 +1,13 @@
 <div class="container">
-  <h2>🔥 This Month's Hottest Listings 🔥</h2>
-  <p>Here are this month's 9 most viewed listings on Wonderobe</p>
+  <h2 class="mb-4">Most viewed in <%= Date.today.strftime("%B") %></h2>
 </div>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators indicators">
+    <ol class="carousel-indicators indicators  mb-3">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active indicator"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1" class="indicator"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicator"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner mb-3">
       <% if @top_listings.empty? %>
         <% listings = @listings %>
       <% else %>
