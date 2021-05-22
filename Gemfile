@@ -43,7 +43,7 @@ gem "punching_bag"
 gem "iso_country_codes"
 gem 'emoji_flag'
 gem "normalize_country"
-
+gem 'turbolinks_render'
 
 
 #PG search

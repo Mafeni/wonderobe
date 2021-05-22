@@ -1,4 +1,4 @@
-    <div id = "card-#{<%=listing.id %>}" class="col-auto mb-3">
+    <div id = "card-<%=listing.id.to_s %>" class="col-auto mb-3">
       <a class="card-link" href=<%= listing_path(listing) %>>
         <div class="card">
           <% if listing.photos.attached? %>
