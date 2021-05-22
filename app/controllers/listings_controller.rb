@@ -5,9 +5,9 @@ class ListingsController < ApplicationController
   def index
     @top_listings = Listing.where(purchased_status: false).most_hit(1.month.ago, 9)
     if params[:query].present?
-      @listings = Listing.search_by_listing_name_and_description(params[:query])
+      @listings = Listing.where(purchased_status: false).search_by_listing_name_and_description(params[:query])
     else
-      @listings = Listing.all
+      @listings = Listing.all.where(purchased_status: false)
     end
     @favourite = Favourite.new
     @users = User.where.not(latitude: nil, longitude: nil)
