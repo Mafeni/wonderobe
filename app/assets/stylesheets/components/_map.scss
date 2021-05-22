@@ -21,11 +21,12 @@
 }
 
 .mapboxgl-popup {
-  max-width: 250px;
+  white-space: normal;
   padding: 1rem;
 }
 
 .mapboxgl-popup-content {
+  border-radius: 8px !important;
   padding: 0px !important;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
@@ -34,5 +35,52 @@
 .infoCard{
   border-radius: 8px;
   border: 0;
-  box-shadow: -4px 4px 4px rgba(0,0,0,0.1);
+  box-shadow: -4px 4px 4px rgba(0,0,0,0.4);
 }
+
+// .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip{
+//   background-color: #3fb1ce;
+// }
+
+// .mapboxgl-popup-tip{
+//   background-color: #3fb1ce;
+//   width: 0;
+//   height: 0;
+//   border: 10px solid transparent;
+//   z-index: 1;
+// }
+
+.info-avatar{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.name{
+  padding: 4px;
+  font-size: 16px;
+  overflow-wrap: break-word;
+  color: $black;
+  &:hover {
+    color: $blue;
+    text-decoration: none;
+  }
+  a {
+    color: $black;
+    text-decoration: none;
+    &:hover{
+      color: $blue;
+    }
+  }
+}
+
+.listing-link{
+  font-size: 16px;
+  text-decoration: none;
+  color: $black;
+  &:hover {
+    color: $blue;
+    text-decoration: none;
+  }
+}
+
