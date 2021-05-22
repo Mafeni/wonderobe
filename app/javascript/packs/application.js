@@ -46,6 +46,9 @@ document.addEventListener('turbolinks:load', () => {
   // $('.scroller').slick()
   initAutocomplete();
   changePic();
+  document.addEventListener("DOMContentLoaded", function(event) {
+    initMapbox();
+  });
   initMapbox();
   initStarRating();
   collapseHeaders();
