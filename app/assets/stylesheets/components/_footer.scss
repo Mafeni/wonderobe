@@ -12,3 +12,13 @@
   max-width: 300px;
   margin: 0px;
 }
+
+.brand-name-footer {
+  position:relative;
+  box-sizing: border-box;
+  font-family: $brand-font;
+  color: $gray;
+  vertical-align: middle;
+  display: inline-block;
+  top: 2px;
+}
