@@ -27,6 +27,11 @@
 }
 
 .brand-name {
- font-family: $brand-font;
- color: $blue;
+  position:relative;
+  box-sizing: border-box;
+  font-family: $brand-font;
+  color: $blue;
+  vertical-align: middle;
+  display: inline-block;
+  top: 2px;
 }
